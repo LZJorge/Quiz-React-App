@@ -1,4 +1,4 @@
-# Quiz Game (API)
+# Quiz Game (APP)
 > The following is an React Frontend APP created for a quiz game on different topics.
 
 ## General Information
