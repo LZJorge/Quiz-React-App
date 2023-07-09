@@ -1,0 +1,96 @@
+@import '../../style/variables';
+
+.input-box {
+    position: relative;
+    width: 90%;
+    height: 45px;
+    margin: 11px auto;
+    z-index: 50;
+
+    input,
+    textarea,
+    select {    
+        width: 100%;
+
+        border-radius: 4px;
+        padding: 11px 30px 11px 40px;
+        background-color: rgb(235, 235, 235);
+        outline: none;
+        border: $button-border-radius;
+        font-size: 16px;
+        transition: all .2s;
+
+        z-index: 100;
+
+        &:hover {
+            background-color: #ebebeb;
+
+            ~ label {
+                background-color: #ebebeb;
+            }
+        }
+
+        &::placeholder {
+            color: rgb(37, 37, 37);
+        }
+
+        &:placeholder-shown ~ label {
+            cursor: text;
+            top: 11px;
+        }
+
+        &:not(:placeholder-shown) {
+            background-color: #fff;
+            border: 1px solid rgb(220, 220, 220);
+    
+            ~ label {
+                font-size: 12px;
+                background-color: #fff;
+            }
+        }
+
+        &:focus {
+            background-color: $white;
+            border: 1px solid rgb(78, 84, 200);
+            box-shadow: 0 0 4px 2px rgb(50, 50, 50, 0.1);
+
+            ~ label {
+                position: absolute;
+                top: -11px;
+                left: 43px;
+                transition: 0.2s;
+                background-color: $white;
+                font-size: 12px;
+            }
+        }
+    }
+
+    label {
+        position: absolute;
+        left: 43px;
+        top: -11px;
+        padding: 0 3px;
+        transition: 0.2s;
+        font-size: 16px;
+        color: #838383;
+        pointer-events: none;
+        background-color: rgb(235, 235, 235);
+    }
+
+    span {
+        position: absolute;
+        left: 2px;
+        bottom: 0px;
+        width: 40px;
+        height: 46px;
+
+        i {
+            height: 100%;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

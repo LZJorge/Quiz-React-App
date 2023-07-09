@@ -1,0 +1,114 @@
+@import '../../style/variables';
+
+aside {
+    width: 176px;
+    height: 100%;
+    background-color: $white;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all .2s;
+
+    box-shadow: $box-shadow;
+
+    .aside-title {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: 32px;
+            margin-right: 6px;
+            transition: all .1s;
+        }
+
+        i {
+            font-size: 36px;
+        }
+    }
+
+    .aside-buttons {
+        width: 90%;
+        height: calc(80% - 60px);
+
+        overflow-y: scroll;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .aside-button {
+            width: 100%;
+            padding: 10px 16px;
+            margin: 8px 0;
+
+            cursor: pointer;
+            border-radius: 2px;
+
+            display: flex;
+            align-items: center;
+            transition: all .1s;
+
+            font-size: 14px;
+        
+            i {
+                font-size: 22px;
+                margin-right: 10px;
+            }
+        
+            &:hover {
+                color: $white;
+                background-color: $primary;
+                box-shadow: $button-box-shadow;
+        
+                i {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .aside-extra {
+        display: flex;
+        height: 40px;
+        justify-content: left;
+        align-items: center;
+        padding: 0 20px;
+    }
+}
+
+aside.aside-closed {
+    width: $aside-width-closed;
+
+    .aside-title {
+        h1 {
+            display: none;
+            margin: 0;
+        }
+    }
+
+    .aside-buttons {
+        .aside-button {
+            width: 75%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                margin: 0;
+            }
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+     .aside-extra {
+        justify-content: center;
+    }
+}

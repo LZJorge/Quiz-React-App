@@ -10,6 +10,9 @@ lerna-debug.log*
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
+# Environment variables
+.env
+
 # Runtime data
 pids
 *.pid
@@ -72,13 +75,6 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
-
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
@@ -116,6 +112,9 @@ dist
 # DynamoDB Local files
 .dynamodb/
 
+# SQlite
+db.sqlite3
+
 # TernJS port file
 .tern-port
 
@@ -128,3 +127,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Template for views
+template
+
+# Production
+build/
+dist/
+
+# Rest client file
+request.http
+
+.vscode
