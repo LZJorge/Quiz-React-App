@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { isAxiosError } from 'axios'
 import { Input } from '../../components/inputs'
-import Button from '../../components/buttons'
+import Button from '../../components/button'
 import { SendLoginFormData } from '../../services/userServices'
 import { toast } from 'react-toastify'
 import './index.css'

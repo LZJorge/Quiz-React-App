@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { getCurrentUserData } from "../../services/userServices"
-import Button from "../../components/buttons"
+import { getData } from "../../services/userServices"
+import Button from "../../components/button"
 import Layout from "../../components/layout"
 import { formatDate } from "../../helpers/helpers"
 import './index.css'
@@ -21,7 +21,7 @@ const Profile: React.FC = () => {
 
 	useEffect(() => {
 		const fetchUserData = async (): Promise<void> => {
-			const response: ApiResponse = await getCurrentUserData()
+			const response: ApiResponse = await getData('/user/getCurrentUser')
 
 			response.user.createdAt = formatDate(response.user.createdAt)
 

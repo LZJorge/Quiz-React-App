@@ -1,0 +1,130 @@
+@import '../../../style/variables';
+
+$border: 2px double black;
+.top-3 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    text-align: center;
+    margin-bottom: 35px;
+
+    .user-order {
+        padding: 12px 45px 6px;
+        background-color: $white;
+        border-radius: 8px 8px 0 0;
+        box-shadow: $box-shadow;
+
+        position: relative;
+
+        img {
+            background-color: $primary;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        h3 {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        h6 {
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+
+            width: 36px;
+            height: 36px;
+            padding: 4px;
+
+            font-weight: 800;
+            font-size: 20px;
+            color: $white;
+
+            transform: translateX(-50%);
+
+            background-color: darken($primary, 5);
+            border-radius: 50%;
+        }
+    }
+    
+    
+
+    .user-order-1 {
+        order: 2;
+        img {
+            width: 170px;
+        }
+    }
+
+    .user-order-2 {
+        order: 1;
+        img {
+            width: 130px;
+        }
+    }
+
+    .user-order-3 {
+        order: 3;
+        img {
+            width: 90px;
+        }
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: $box-shadow;
+    background-color: $white;
+    border-radius: 8px;
+
+    thead {
+        font-weight: 700;
+        font-size: 18px;
+
+        height: 50px;
+
+        th {
+            background-color: $primary;
+            color: $white;
+        }
+
+        th:first-of-type {
+            border-top-left-radius: 8px;
+        }
+
+        th:last-of-type {
+            border-top-right-radius: 8px;
+        }
+    }
+
+    tr {
+        td {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .table-position,
+        .score {
+            text-align: center;
+        }
+
+        .score {
+            font-weight: 700;
+            font-size: 18px;
+            color: $success;
+        }
+
+        .position-0 {
+
+        }
+    }
+}

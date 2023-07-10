@@ -4,6 +4,7 @@ import { shuffleArray } from '../helpers/helpers'
 const API = 'http://localhost:8000'
 
 interface Question {
+    id: number
     title: string
     options: string[]
     difficulty: string
@@ -15,6 +16,7 @@ export const getQuestion = async (): Promise<Question>  => {
         const options = shuffleArray(res.data.options)
 
         return {
+            id: res.data.id,
             title: res.data.question,
             options: options,
             difficulty: res.data.difficulty

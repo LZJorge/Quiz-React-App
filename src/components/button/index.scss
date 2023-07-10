@@ -21,6 +21,11 @@
     }
 }
 
+.button:disabled {
+    cursor: not-allowed;
+    background-color: lighten($primary, 30);
+}
+
 .button.button-primary {
     background-color: $primary;
     color: $white;

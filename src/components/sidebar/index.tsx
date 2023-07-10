@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { SidebarContext } from "../../context/SidebarContext"
 import { useNavigate, Link } from "react-router-dom"
-import Button from "../buttons"
-import { logoutUser } from "../../services/userServices"
+import Button from "../button"
+import { getData } from "../../services/userServices"
 import Swal from "sweetalert2"
 import { toast } from "react-toastify"  
 import '../../../node_modules/sweetalert2/dist/sweetalert2.min.css'    
@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
       confirmButtonText: 'Cerrar'
     }).then( async (result) => {
       if(result.isConfirmed) {
-        const response = await logoutUser()
+        const response = await getData('/user/logout')
 
         if (response.code == 'success') {
           toast.success(response.message)
@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      <aside className={ sidebarState === 'open' ? 'aside-open' : 'aside-closed' }>
+      <aside className={ sidebarState === 'closed' ? 'aside-closed' : 'aside-open' }>
         <div className="aside-title">
           <h1 className="title">Quiz</h1>
           <i className="bx bx-bulb bx-tada-hover"></i>
@@ -53,7 +53,7 @@ const Sidebar: React.FC = () => {
             <span>Jugar</span>
           </Link>
 
-          <Link to={'#'} className="aside-button">
+          <Link to={'/leaderboard'} className="aside-button">
             <i className="bx bxs-trophy"></i>
             <span>Clasificación</span>
           </Link>

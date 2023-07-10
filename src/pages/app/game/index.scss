@@ -1,0 +1,80 @@
+@import '../../../style/variables';
+
+.question-box {
+    min-height: calc(16px * 3 * 2);
+    margin: 35px auto;
+    outline: 2px solid $secondary;
+    border: 2px solid $primary;
+    background-color: $white;
+    box-shadow: rgba(0, 0, 0, 0.176) 0px 16px 48px 0px;
+    border-radius: 2px;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h3 {
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: 700;
+    }
+}
+
+$text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2), -1px -1px 0 rgba(255, 255, 255, 0.2), 1px -1px 0 rgba(255, 255, 255, 0.2), -1px 1px 0 rgba(255, 255, 255, 0.2),0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #4CAF50;
+
+.difficulty-box {
+    text-align: center;
+    margin: 25px auto 0;
+    width: 90%;
+    height: 25px;
+    background-color: #454545;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+    p {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: $white;
+        font-size: 14px;
+        font-weight: 600;
+        z-index: 100;
+    }
+
+    div {
+        transition: all .6s;
+        width: 0px;
+        height: 25px;
+        z-index: 50;
+    }
+
+    div.facil {
+        width: 33.3%;
+        background-color: $success;
+    }
+
+    div.moderado {
+        width: 66.6%;
+        background-color: $warning;
+    }
+
+    div.dificil {
+        width: 100%;
+        background-color: $danger;
+    }
+}
+
+.option-buttons {
+    display: grid;
+    width: 90%;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax($button-l-width, 1fr));
+    grid-auto-rows: 60px;
+    padding-bottom: 20px;
+    gap: 20px;
+}

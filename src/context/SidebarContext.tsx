@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, Dispatch, SetStateAction } from "react"
+import { createContext, useState, ReactNode, Dispatch, SetStateAction } from "react"
 
 interface SidebarContextProps {
   sidebarState: string
@@ -6,7 +6,7 @@ interface SidebarContextProps {
 }
 
 export const SidebarContext = createContext<SidebarContextProps>({
-  sidebarState: 'open',
+  sidebarState: 'closed',
   setSidebarState: () => {}
 })
 
@@ -15,7 +15,7 @@ interface SidebarProviderProps {
 }
 
 export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children }) => {
-  const [sidebarState, setSidebarState] = useState('open')
+  const [sidebarState, setSidebarState] = useState('closed')
 
   return (
     <SidebarContext.Provider value={{ sidebarState, setSidebarState }}>

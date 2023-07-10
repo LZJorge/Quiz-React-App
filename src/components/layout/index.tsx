@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
-import Sidebar from "../sidebar";
-import Navbar from "../navbar";
-import { SidebarProvider } from "../../context/SidebarContext";
+import { ReactNode } from "react"
+import Sidebar from "../sidebar"
+import Navbar from "../navbar"
 import './index.css'
 
 interface LayoutProps {
@@ -11,15 +10,12 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="box">
-      <SidebarProvider>
         <Sidebar />
 
         <div className="content">
           <Navbar/>
-
           { children }
         </div>
-      </SidebarProvider>
     </div>
   )
 }

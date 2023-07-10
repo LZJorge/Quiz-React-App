@@ -5,11 +5,18 @@ interface Props {
 	type: 'button' | 'submit'
 	className?: string
   size?: string
-  value: string
-	onClick?: (value: string) => void
+  value?: string
+	onClick?: (value: string | undefined) => void
 }
 
-const Button: React.FC<Props> = ({ children, type, className, size, value, onClick }) => {
+const Button: React.FC<Props> = ({ 
+  children, 
+  type, 
+  className, 
+  size, 
+  value,
+  onClick 
+}) => {
   return (
     <button
       type={type}

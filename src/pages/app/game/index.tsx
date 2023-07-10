@@ -1,15 +1,18 @@
-import { useCallback } from 'react'
-import { sendAnswer } from '../../services/appServices'
+import { sendAnswer } from '../../../services/appServices'
 import { toast } from 'react-toastify'
-import Button from '../../components/buttons'
-import Layout from '../../components/layout'
-import { useQuestion } from '../../hooks/useQuestion'
+import Button from '../../../components/button'
+import Layout from '../../../components/layout'
+import Loading from '../../../components/loading'
+import { useQuestion } from '../../../hooks/useQuestion'
 import './index.css'
 
 const Game: React.FC = () => {
-  const { question, setCondition } = useQuestion()
+  const { question, isLoading, setIsLoading, setNewQuestion } = useQuestion()
 
-  const handleClick = useCallback(async (value: string) => {
+  const handleClick = async (value: string) => {
+    if(isLoading) return
+    setIsLoading(true)
+
     const response = await sendAnswer(value)
 
     if (response.code == 'success') {
@@ -18,10 +21,10 @@ const Game: React.FC = () => {
       toast.error(response.message)
     }
 
-    setCondition(true)
-  }, [])
+    setNewQuestion(true)
+  }
 
-  const renderOptionButtons = question.options.map((value: string, key: string) => {
+  const renderOptionButtons = question.options.map((value: string, key: number) => {
     return <Button
       children={value}
       type='button'
@@ -52,9 +55,13 @@ const Game: React.FC = () => {
             <p> Dificultad </p>
           </div>
 
-          <div className='option-buttons'>
-            { renderOptionButtons }
-          </div>
+          { isLoading ? (
+            <Loading />
+          ) : (
+            <div className='option-buttons'>
+              { renderOptionButtons }
+            </div>
+          ) }
         </>
       )}
     </Layout>

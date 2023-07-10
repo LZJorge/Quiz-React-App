@@ -28,16 +28,18 @@ export const SendRegisterFormData = async (formData: userRegisterForm) => {
 	return response
 }
 
-export const getCurrentUserData = async () => {
-	const response = await axios.get(`${URL}/user/getCurrentUser`, { withCredentials: true })
-		.then((res) => {
-			return res.data
-		})
-	return response
-}
+/***
+ * @url /user/getCurrentUser
+ * @url /user/getLeaderboard
+ * @url /user/logout
+ */
+type Endpoint = 
+	'/user/getCurrentUser' | 
+	'/user/getLeaderboard' | 
+	'/user/logout'
 
-export const logoutUser = async () => {
-	const response = await axios.get(`${URL}/user/logout`, { withCredentials: true })
+export const getData = async (endpoint: Endpoint) => {
+	const response = await axios.get(`${URL}${endpoint}`, { withCredentials: true })
 		.then((res) => {
 			return res.data
 		})
