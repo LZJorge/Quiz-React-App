@@ -41,14 +41,15 @@
 }
 
 .button.button-secondary {
-    border: 1px solid $secondary;
-    font-weight: 700;
+    border: 1.5px solid $black;
+    font-weight: 500;
     color: $black;
 
     i { color: $black; }
 
     &:hover {
         background-color: $secondary;
+        border-color: $secondary;
         color: $white;
 
         i { color: $white; }

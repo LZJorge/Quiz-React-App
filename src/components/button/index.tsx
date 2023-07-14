@@ -1,7 +1,8 @@
 import './index.css'
 
 interface Props {
-	children: string | any
+  text?: string
+	children?: string | any
 	type: 'button' | 'submit'
 	className?: string
   size?: string
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const Button: React.FC<Props> = ({ 
+  text,
   children, 
   type, 
   className, 
@@ -24,6 +26,7 @@ const Button: React.FC<Props> = ({
       value={value}
       onClick={() => onClick?.(value)}
     >
+      { text }
       { children }
     </button>
   )

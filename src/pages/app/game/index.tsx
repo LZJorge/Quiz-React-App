@@ -2,7 +2,7 @@ import { sendAnswer } from '../../../services/appServices'
 import { toast } from 'react-toastify'
 import Button from '../../../components/button'
 import Layout from '../../../components/layout'
-import Loading from '../../../components/loading'
+import Loader from '../../../components/loader'
 import { useQuestion } from '../../../hooks/useQuestion'
 import './index.css'
 
@@ -56,7 +56,7 @@ const Game: React.FC = () => {
           </div>
 
           { isLoading ? (
-            <Loading />
+            <Loader />
           ) : (
             <div className='option-buttons'>
               { renderOptionButtons }

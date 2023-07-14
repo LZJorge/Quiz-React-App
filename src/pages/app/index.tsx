@@ -1,65 +1,82 @@
-import { useState, useEffect } from "react"
-import { getData } from "../../services/userServices"
-import Button from "../../components/button"
+import { useMemo } from "react"
+import { useUser } from "../../hooks/useUser"
 import Layout from "../../components/layout"
-import { formatDate } from "../../helpers/helpers"
+import Loader from "../../components/loader"
 import './index.css'
 
-interface User {
-	id: string
-	username: string
-	score: number
-	createdAt: string
-}
-
-interface ApiResponse {
-	user: User
-}
-
 const Profile: React.FC = () => {
-	const [user, setUser] = useState<User | null>(null)
+	const { user, isLoading } = useUser()
 
-	useEffect(() => {
-		const fetchUserData = async (): Promise<void> => {
-			const response: ApiResponse = await getData('/user/getCurrentUser')
+	const userSuccessRate = useMemo(() =>
+		(successResponses: number, totalQuestions: number) => {
+			const rate = Math.round((successResponses / totalQuestions) * 100)
 
-			response.user.createdAt = formatDate(response.user.createdAt)
-
-			if(response.user) {
-				setUser(response.user)
-			}
-		}
-		fetchUserData()
-	}, [])
+			return rate
+		}, [])
 
 	return (
 		<Layout>
-			{user && (
+			{isLoading ? (
+				<Loader />
+			) : (
 				<>
-					<div className="profile-section">
-						<img src="/avatars/041-man.svg" alt="PROFILE MAN AVATAR" />
-						
-						<div className="profile-info">
-							<div className="user-info">
-								<h1> { user.username } </h1>
-								<h4 className="created-info"> 
-									Se unió el: 
-									<span> { user.createdAt } </span>
-								</h4>
-							</div>
+					{user && (
+						<>
+							<div className="profile-container">
+								<section className="profile">
+									<section className="profile-info">
+										<div className="profile-image">
+											<img
+												src={`http://localhost:8000${user.profileImg}`}
+												alt="PROFILE MAN AVATAR"
+											/>
+										</div>
 
-							<div className="score-info">
-								<div>
-									<h1>{ user.score }</h1>
-									<h4> Puntuación: </h4>
-								</div>
-								<div className="score-box">
-									<i className="bx bxs-star"></i>
-								</div>
-								
+										<div className="user-info">
+											<h1> {user.username} </h1>
+											<h4 className="created-info">
+												<span> {user.createdAt} </span>
+											</h4>
+										</div>
+									</section>
+
+										<div className="success-rate-bar">
+											<div className="success-rate-bar-text">
+												Porcentaje de éxito:
+												<span>
+													{userSuccessRate(user.successResponses, user.totalQuestions)}%
+												</span>
+											</div>
+
+											<div
+												className="rate"
+												style={{ width: `${userSuccessRate(user.successResponses, user.totalQuestions)}%` }}
+											></div>
+										</div>
+								</section>
+
+								<section className="profile-stats">
+									<div>
+										<p>Puntuación:</p>
+										<h1>{user.score}</h1>
+										<i className="bx bxs-star"></i>
+									</div>
+
+									<div>
+										<p>Respuestas acertadas:</p>
+										<h1>{user.successResponses}</h1>
+										<i className="bx bxs-check-circle"></i>
+									</div>
+
+									<div>
+										<p>Preguntas totales:</p>
+										<h1>{user.totalQuestions}</h1>
+										<i className="bx bxs-help-circle"></i>
+									</div>
+								</section>
 							</div>
-						</div>
-					</div>
+						</>
+					)}
 				</>
 			)}
 		</Layout>

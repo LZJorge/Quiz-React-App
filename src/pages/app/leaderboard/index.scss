@@ -10,6 +10,7 @@ $border: 2px double black;
     margin-bottom: 35px;
 
     .user-order {
+        max-width: 30%;
         padding: 12px 45px 6px;
         background-color: $white;
         border-radius: 8px 8px 0 0;
@@ -24,6 +25,9 @@ $border: 2px double black;
         }
 
         h3 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             margin-top: 15px;
             font-size: 14px;
         }
@@ -48,14 +52,13 @@ $border: 2px double black;
 
             transform: translateX(-50%);
 
-            background-color: darken($primary, 5);
+            background-color: $secondary;
             border-radius: 50%;
         }
     }
-    
-    
 
     .user-order-1 {
+        max-width: 35%;
         order: 2;
         img {
             width: 170px;
@@ -63,6 +66,7 @@ $border: 2px double black;
     }
 
     .user-order-2 {
+        max-width: 31%;
         order: 1;
         img {
             width: 130px;
@@ -70,6 +74,7 @@ $border: 2px double black;
     }
 
     .user-order-3 {
+        max-width: 28%;
         order: 3;
         img {
             width: 90px;
@@ -86,11 +91,12 @@ table {
 
     thead {
         font-weight: 700;
-        font-size: 18px;
-
+        font-size: 16px;
+        
         height: 50px;
 
         th {
+            
             background-color: $primary;
             color: $white;
         }
@@ -110,11 +116,15 @@ table {
             margin: 5px;
             font-size: 16px;
             font-weight: 500;
+            text-align: center;
         }
 
-        .table-position,
-        .score {
-            text-align: center;
+        .table-username {
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
         }
 
         .score {
@@ -122,9 +132,9 @@ table {
             font-size: 18px;
             color: $success;
         }
+    }
 
-        .position-0 {
-
-        }
+    tr:nth-child(odd) {
+        background-color: #efefef;
     }
 }

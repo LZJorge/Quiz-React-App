@@ -3,11 +3,9 @@
 .question-box {
     min-height: calc(16px * 3 * 2);
     margin: 35px auto;
-    outline: 2px solid $secondary;
-    border: 2px solid $primary;
+    box-shadow: $box-shadow;
     background-color: $white;
-    box-shadow: rgba(0, 0, 0, 0.176) 0px 16px 48px 0px;
-    border-radius: 2px;
+    border-radius: 4px;
     padding: 15px;
 
     display: flex;
@@ -22,8 +20,6 @@
         font-weight: 700;
     }
 }
-
-$text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2), -1px -1px 0 rgba(255, 255, 255, 0.2), 1px -1px 0 rgba(255, 255, 255, 0.2), -1px 1px 0 rgba(255, 255, 255, 0.2),0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #4CAF50;
 
 .difficulty-box {
     text-align: center;

@@ -23,7 +23,8 @@ const Navbar: React.FC = () => {
 
       <div>
         <Button
-          children="Guía de juego"
+          text="Guía de juego"
+          children={<i className="bx bxs-help-circle"></i>}
           type="button"
           value=""
           className="secondary"
