@@ -3,6 +3,7 @@ import { getData } from "../services/userServices"
 
 export interface User {
     username: string
+	profileImgUrl: string
     score: number
 	successResponses: number
     createdAt: string

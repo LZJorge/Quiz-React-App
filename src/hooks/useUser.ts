@@ -5,7 +5,7 @@ import { formatDate } from "../helpers/helpers"
 export interface User {
 	id: string
 	username: string
-	profileImg: string
+	profileImgUrl: string
 	score: number
 	totalQuestions: number
 	successResponses: number

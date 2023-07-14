@@ -7,7 +7,6 @@
     border: none;
     cursor: pointer;
     margin: 25px auto;
-    transition: all .1s;
     height: 40px;
 
     display: flex;
@@ -16,7 +15,10 @@
     background-color: transparent;
     border-radius: $button-border-radius;
 
+    transition: all .1s;
+
     i {
+        transition: all .1s;
         font-size: 24px;
     }
 }
@@ -41,18 +43,17 @@
 }
 
 .button.button-secondary {
-    border: 1.5px solid $black;
-    font-weight: 500;
+    border: 1px solid $black;
+    font-weight: 600;
     color: $black;
 
     i { color: $black; }
 
     &:hover {
-        background-color: $secondary;
         border-color: $secondary;
-        color: $white;
+        color: $secondary;
 
-        i { color: $white; }
+        i { color: $secondary; }
     }
 }
 

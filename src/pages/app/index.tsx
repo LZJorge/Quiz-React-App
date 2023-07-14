@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
 									<section className="profile-info">
 										<div className="profile-image">
 											<img
-												src={`http://localhost:8000${user.profileImg}`}
+												src={`${import.meta.env.VITE_API_URL}${user.profileImgUrl}`}
 												alt="PROFILE MAN AVATAR"
 											/>
 										</div>
@@ -40,19 +40,19 @@ const Profile: React.FC = () => {
 										</div>
 									</section>
 
-										<div className="success-rate-bar">
-											<div className="success-rate-bar-text">
-												Porcentaje de éxito:
-												<span>
-													{userSuccessRate(user.successResponses, user.totalQuestions)}%
-												</span>
-											</div>
-
-											<div
-												className="rate"
-												style={{ width: `${userSuccessRate(user.successResponses, user.totalQuestions)}%` }}
-											></div>
+									<div className="success-rate-bar">
+										<div className="success-rate-bar-text">
+											Porcentaje de éxito:
+											<span>
+												{userSuccessRate(user.successResponses, user.totalQuestions)}%
+											</span>
 										</div>
+
+										<div
+											className="rate"
+											style={{ width: `${userSuccessRate(user.successResponses, user.totalQuestions)}%` }}
+										></div>
+									</div>
 								</section>
 
 								<section className="profile-stats">
