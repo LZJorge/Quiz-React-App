@@ -4,7 +4,7 @@ import { Input } from '../../components/inputs'
 import Button from '../../components/button'
 import { SendRegisterFormData } from '../../services/userServices'
 import { toast } from 'react-toastify'
-import './index.css'
+import styles from './style.module.scss'
 
 interface RegisterForm {
   username: FormDataEntryValue | string
@@ -46,7 +46,7 @@ const Register: React.FC = () => {
   }
 
   return (
-    <div className='form-box'>
+    <div className={styles['form-box']}>
       <form onSubmit={handleSubmit}>
         <h1>
           Quiz Game <i className="bx bx-bulb bx-tada-hover"></i>

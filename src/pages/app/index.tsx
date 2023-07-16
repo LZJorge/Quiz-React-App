@@ -2,7 +2,7 @@ import { useMemo } from "react"
 import { useUser } from "../../hooks/useUser"
 import Layout from "../../components/layout"
 import Loader from "../../components/loader"
-import './index.css'
+import styles from './style.module.scss'
 
 const Profile: React.FC = () => {
 	const { user, isLoading } = useUser()
@@ -22,26 +22,26 @@ const Profile: React.FC = () => {
 				<>
 					{user && (
 						<>
-							<div className="profile-container">
-								<section className="profile">
-									<section className="profile-info">
-										<div className="profile-image">
+							<div className={styles["profile-container"]}>
+								<section className={styles.profile}>
+									<section className={styles["profile-info"]}>
+										<div className={styles["profile-image"]}>
 											<img
 												src={`${import.meta.env.VITE_API_URL}${user.profileImgUrl}`}
 												alt="PROFILE MAN AVATAR"
 											/>
 										</div>
 
-										<div className="user-info">
+										<div className={styles["user-info"]}>
 											<h1> {user.username} </h1>
-											<h4 className="created-info">
+											<h4 className={styles["created-info"]}>
 												<span> {user.createdAt} </span>
 											</h4>
 										</div>
 									</section>
 
-									<div className="success-rate-bar">
-										<div className="success-rate-bar-text">
+									<div className={styles["success-rate-bar"]}>
+										<div className={styles["success-rate-bar-text"]}>
 											Porcentaje de éxito:
 											<span>
 												{userSuccessRate(user.successResponses, user.totalQuestions)}%
@@ -49,13 +49,13 @@ const Profile: React.FC = () => {
 										</div>
 
 										<div
-											className="rate"
+											className={styles.rate}
 											style={{ width: `${userSuccessRate(user.successResponses, user.totalQuestions)}%` }}
 										></div>
 									</div>
 								</section>
 
-								<section className="profile-stats">
+								<section className={styles["profile-stats"]}>
 									<div>
 										<p>Puntuación:</p>
 										<h1>{user.score}</h1>

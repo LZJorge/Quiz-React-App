@@ -15,7 +15,6 @@
     box-shadow: rgba(0, 0, 0, 0.176) 0px 16px 48px 0px;
 
     .content {
-        width: calc(100% - $aside-width-open);
         height: 100%;
         padding: 20px;
         transition: all .2s;
@@ -25,7 +24,11 @@
         overflow-y: scroll;
     }
 
-    .aside-closed ~ .content {
-        width: calc(100% - $aside-width-closed);
+    .content--aside-open {
+        width: calc(100% - #{$aside-width-open});
+    }
+
+    .content--aside-closed {
+        width: calc(100% - #{$aside-width-closed});
     }
 }

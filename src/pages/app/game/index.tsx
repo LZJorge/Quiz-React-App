@@ -4,7 +4,7 @@ import Button from '../../../components/button'
 import Layout from '../../../components/layout'
 import Loader from '../../../components/loader'
 import { useQuestion } from '../../../hooks/useQuestion'
-import './index.css'
+import styles from './style.module.scss'
 
 const Game: React.FC = () => {
   const { question, isLoading, setIsLoading, setNewQuestion } = useQuestion()
@@ -28,7 +28,7 @@ const Game: React.FC = () => {
     return <Button
       children={value}
       type='button'
-      className='primary question-button'
+      className='primary'
       value={value}
       onClick={() => handleClick(value)}
       key={key}
@@ -40,16 +40,16 @@ const Game: React.FC = () => {
     <Layout>
       {question && (
         <>
-          <div className='question-box'>
+          <div className={styles['question-box']}>
             <h3>
               {question.title}
             </h3>
           </div>
 
-          <div className='difficulty-box'>
+          <div className={styles['difficulty-box']}>
             <div 
               className={
-                [question.difficulty.toLowerCase()].join(' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                styles[[question.difficulty.toLowerCase()].join(' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '')]
               }>
             </div>
             <p> Dificultad </p>
@@ -58,7 +58,7 @@ const Game: React.FC = () => {
           { isLoading ? (
             <Loader />
           ) : (
-            <div className='option-buttons'>
+            <div className={styles['option-buttons']}>
               { renderOptionButtons }
             </div>
           ) }

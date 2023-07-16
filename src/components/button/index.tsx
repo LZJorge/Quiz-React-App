@@ -1,11 +1,11 @@
-import './index.css'
+import styles from './style.module.scss'
 
 interface Props {
   text?: string
 	children?: string | any
 	type: 'button' | 'submit'
+  size: string
 	className?: string
-  size?: string
   value?: string
 	onClick?: (value: string | undefined) => void
 }
@@ -19,10 +19,12 @@ const Button: React.FC<Props> = ({
   value,
   onClick 
 }) => {
+  const dynamicClass = className ? `button-${className}` : ''
+  
   return (
     <button
       type={type}
-      className={`button button-${className} ${size}`}
+      className={`${styles.button} ${styles[dynamicClass]} ${styles[size]}`}
       value={value}
       onClick={() => onClick?.(value)}
     >

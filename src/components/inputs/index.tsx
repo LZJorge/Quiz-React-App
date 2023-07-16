@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react'
-import './index.css'
+import styles from './style.module.scss'
 
 interface Props {
 	type: string
@@ -13,7 +13,7 @@ interface Props {
 
 export const Input: React.FC<Props> = ({ type, name, placeholder, required, iconClassName, label, onChange }) => {
   return (
-    <div className='input-box'>
+    <div className={styles['input-box']}>
       <input
         type={type}
         name={name}

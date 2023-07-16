@@ -6,7 +6,7 @@ import { getData } from "../../services/userServices"
 import Swal from "sweetalert2"
 import { toast } from "react-toastify"  
 import '../../../node_modules/sweetalert2/dist/sweetalert2.min.css'    
-import './index.css'
+import styles from './style.module.scss'
 
 const Sidebar: React.FC = () => {  
   const { sidebarState } = useContext(SidebarContext)
@@ -36,40 +36,39 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      <aside className={ sidebarState === 'closed' ? 'aside-closed' : 'aside-open' }>
-        <div className="aside-title">
-          <h1 className="title">Quiz</h1>
+      <aside className={ sidebarState === 'closed' ? styles['aside-closed'] : styles['aside-open'] }>
+        <div className={styles["aside-title"]}>
+          <h1 className={styles.title}>Quiz</h1>
           <i className="bx bx-bulb bx-tada-hover"></i>
         </div>
 
-        <div className="aside-buttons">
-          <Link to={'/'} className="aside-button">
+        <div className={styles["aside-buttons"]}>
+          <Link to={'/'} className={styles["aside-button"]}>
             <i className="bx bxs-dashboard"></i>
             <span>Inicio</span>
           </Link>
 
-          <Link to={'/app'} className="aside-button">
+          <Link to={'/app'} className={styles["aside-button"]}>
             <i className="bx bxs-joystick"></i>
             <span>Jugar</span>
           </Link>
 
-          <Link to={'/leaderboard'} className="aside-button">
+          <Link to={'/leaderboard'} className={styles["aside-button"]}>
             <i className="bx bxs-trophy"></i>
             <span>Clasificación</span>
           </Link>
 
-          <Link to={'#'} className="aside-button">
+          <Link to={'#'} className={styles["aside-button"]}>
             <i className="bx bxs-cog"></i>
             <span>Ajustes</span>
           </Link>
         </div>
 
-        <div className="aside-extra">
+        <div className={styles["aside-extra"]}>
           <div>
             <Button
               children={<i className="bx bx-log-out bx-border"></i>}
               type="button"
-              value=""
               size="full"
               onClick={handleLogout}
             />

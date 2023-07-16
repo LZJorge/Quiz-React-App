@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import Layout from '../../../components/layout'
 import { useLeaderboard, User } from '../../../hooks/useLeaderboard'
 import Loader from '../../../components/loader'
-import './index.css'
+import styles from './style.module.scss'
 
 interface Props {
   imageUrl: string
@@ -12,12 +12,12 @@ interface Props {
 
 const UserBox: React.FC<Props> = ({ imageUrl, position, children }) => {
   return (
-    <div className={`user-order user-order-${position}`}>
+    <div className={`${styles['user-order']} ${styles[`user-order-${position}`]}`}>
       <img src={`${import.meta.env.VITE_API_URL}${imageUrl}`} />
 
       { children }
 
-      <div className="tooltip">
+      <div className={styles.tooltip}>
         {position}
       </div>
     </div>
@@ -33,7 +33,7 @@ const Leaderboard: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <div className="top-3">
+          <div className={styles["top-3"]}>
             {leaderboard && (
               leaderboard.map((user: User, key: number) => {
                 if(key > 2) {
@@ -60,13 +60,13 @@ const Leaderboard: React.FC = () => {
               leaderboard.map((user: User, key: number) => {
                 return <tr>
                   { key === 0 ? 
-                    (<td className='icon'><i className="bx bxs-crown"></i></td>) : 
+                    (<td className={styles.icon}><i className="bx bxs-crown"></i></td>) : 
                     (<td></td>) 
                   }
-                  <td className={`table-position position-${key}`}>{key += 1}</td>
-                  <td className='table-username'>{user.username}</td>
+                  <td className={`${styles['table-position']} ${styles[`position-${key}`]}`}>{key += 1}</td>
+                  <td className={styles['table-username']}>{user.username}</td>
                   <td> {user.successResponses} </td>
-                  <td className='score'>{user.score}</td>
+                  <td className={styles.score}>{user.score}</td>
                 </tr>
               })
             )}

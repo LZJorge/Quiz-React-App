@@ -49,17 +49,17 @@
         z-index: 50;
     }
 
-    div.facil {
+    .facil {
         width: 33.3%;
         background-color: $success;
     }
 
-    div.moderado {
+    .moderado {
         width: 66.6%;
         background-color: $warning;
     }
 
-    div.dificil {
+    .dificil {
         width: 100%;
         background-color: $danger;
     }
@@ -73,4 +73,10 @@
     grid-auto-rows: 60px;
     padding-bottom: 20px;
     gap: 20px;
+
+    button {
+        height: 55px;
+        font-size: 16px;
+        box-shadow: $box-shadow;
+    }
 }

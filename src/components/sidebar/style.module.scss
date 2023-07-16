@@ -81,8 +81,8 @@ aside {
     }
 }
 
-aside.aside-closed {
-    width: $aside-width-closed;
+.aside-closed {
+    width: #{$aside-width-closed};
 
     .aside-title {
         h1 {

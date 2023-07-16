@@ -28,7 +28,7 @@
     background-color: lighten($primary, 30);
 }
 
-.button.button-primary {
+.button-primary {
     background-color: $primary;
     color: $white;
 
@@ -40,9 +40,13 @@
 
         i { color: $white; }
     }
+
+    &:focus{
+        box-shadow: 0 0 0 0.25rem rgba(35, 114, 233, 0.4);    
+    }
 }
 
-.button.button-secondary {
+.button-secondary {
     border: 1px solid $black;
     font-weight: 600;
     color: $black;
@@ -57,28 +61,18 @@
     }
 }
 
-.button.small {
+.small {
     width: $button-sm-width;
 }
 
-.button.medium {
+.medium {
     width: $button-m-width;
 }
 
-.button.large {
+.large {
     width: $button-l-width;
 }
 
-.button.full {
+.full {
     width: $button-full-width;
-}
-
-.button.question-button {
-    height: 55px;
-    font-size: 16px;
-    box-shadow: $box-shadow;
-
-    &:focus{
-        box-shadow: 0 0 0 0.25rem rgba(35, 114, 233, 0.4);    
-    }
 }

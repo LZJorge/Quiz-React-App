@@ -2,8 +2,8 @@ import BG from './components/background'
 import { ToastContainer } from 'react-toastify'
 import Router from './routes/routes'
 import { SidebarProvider } from "./context/SidebarContext"
-import 'react-toastify/dist/ReactToastify.css'
-import './App.css'
+import 'react-toastify/dist/ReactToastify.min.css'
+import './global.scss'
 
 const App = () => {
   return (

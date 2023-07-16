@@ -1,6 +1,5 @@
 @import '../../../style/variables';
 
-$border: 2px double black;
 .top-3 {
     width: 100%;
     display: flex;
@@ -10,7 +9,6 @@ $border: 2px double black;
     margin-bottom: 35px;
 
     .user-order {
-        max-width: 30%;
         padding: 12px 45px 6px;
         background-color: $white;
         border-radius: 8px 8px 0 0;
@@ -22,6 +20,7 @@ $border: 2px double black;
             background-color: $primary;
             padding: 8px;
             border-radius: 50%;
+            width: 100%;
         }
 
         h3 {
@@ -60,25 +59,16 @@ $border: 2px double black;
     .user-order-1 {
         max-width: 35%;
         order: 2;
-        img {
-            width: 170px;
-        }
     }
 
     .user-order-2 {
         max-width: 31%;
         order: 1;
-        img {
-            width: 130px;
-        }
     }
 
     .user-order-3 {
         max-width: 28%;
         order: 3;
-        img {
-            width: 90px;
-        }
     }
 }
 
@@ -96,7 +86,6 @@ table {
         height: 50px;
 
         th {
-            
             background-color: $primary;
             color: $white;
         }
