@@ -27,7 +27,47 @@ export const getQuestion = async (): Promise<Question>  => {
 }
 
 export const sendAnswer = async (answer: string) => {
-    const response = await axios.put(`${API}/question`, { answer }, { withCredentials: true })
+    const response = await axios.put(`${API}/question`, { answer }, { 
+        withCredentials: true 
+    })
+    .then((res) => {
+        return res.data
+    })
+
+    return response
+}
+
+/**
+ * Update Password Service
+ * 
+ * @url '/user/update/password'
+ */
+export interface UpdatePasswordForm {
+    password: FormDataEntryValue | string
+    newPassword: FormDataEntryValue | string
+    newPasswordConfirm: FormDataEntryValue | string
+}
+
+export const sendUpdatePasswordForm = async (formData: UpdatePasswordForm) => {
+    const response = await axios.put(`${API}/user/update/password`, formData, { 
+        withCredentials: true 
+    })
+    .then((res) => {
+        return res.data
+    })
+
+    return response
+}
+
+/**
+ * Get Avatars Service
+ * 
+ * @url '/avatars'
+ */
+export const getAvatars = async () => {
+    const response = await axios.get(`${API}/avatars/get`, { 
+        withCredentials: true,
+    })
     .then((res) => {
         return res.data
     })

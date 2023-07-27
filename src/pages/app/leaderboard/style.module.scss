@@ -9,17 +9,15 @@
     margin-bottom: 35px;
 
     .user-order {
-        padding: 12px 45px 6px;
+        padding: 8px 20px 6px;
         background-color: $white;
         border-radius: 8px 8px 0 0;
         box-shadow: $box-shadow;
+        width: 33%;
 
         position: relative;
 
         img {
-            background-color: $primary;
-            padding: 8px;
-            border-radius: 50%;
             width: 100%;
         }
 
@@ -51,7 +49,7 @@
 
             transform: translateX(-50%);
 
-            background-color: $secondary;
+            background-color: $primary;
             border-radius: 50%;
         }
     }
@@ -59,16 +57,28 @@
     .user-order-1 {
         max-width: 35%;
         order: 2;
+
+        img {
+            width: 190px;
+        }
     }
 
     .user-order-2 {
         max-width: 31%;
         order: 1;
+        
+        img {
+            width: 150px;
+        }
     }
 
     .user-order-3 {
         max-width: 28%;
         order: 3;
+
+        img {
+            width: 120px;
+        }
     }
 }
 

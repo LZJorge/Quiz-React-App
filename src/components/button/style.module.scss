@@ -61,6 +61,22 @@
     }
 }
 
+.button-danger {
+    background-color: rgb(233, 35, 35);
+    color: $white;
+    font-weight: 600;
+
+    i { color: $white; }
+
+    &:hover {
+        background-color: rgb(194, 25, 25);
+    }
+
+    &:focus{
+        box-shadow: 0 0 0 0.25rem rgba(233, 35, 35, 0.4);    
+    }
+}
+
 .small {
     width: $button-sm-width;
 }

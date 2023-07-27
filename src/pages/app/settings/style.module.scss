@@ -1,0 +1,31 @@
+@import '../../../style/variables';
+
+.title {
+    text-align: center;
+}
+
+.box {
+    width: 90%;
+    margin: 25px auto 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+
+    h3 {
+        font-size: 24px;
+    }
+
+    ul {
+        list-style-position: inside;
+
+        li {
+            font-size: 20px;
+        }
+    }
+}
+
+.delete {
+    font-weight: 700;
+    color: $danger;
+}

@@ -5,11 +5,13 @@ import Button from "../button"
 import { getData } from "../../services/userServices"
 import Swal from "sweetalert2"
 import { toast } from "react-toastify"  
+import { LoginContext } from "../../context/LoginContext"
 import '../../../node_modules/sweetalert2/dist/sweetalert2.min.css'    
 import styles from './style.module.scss'
 
 const Sidebar: React.FC = () => {  
   const { sidebarState } = useContext(SidebarContext)
+  const { setAuth } = useContext(LoginContext)
   const navigate = useNavigate()
 
   const handleLogout = async () => {
@@ -26,6 +28,7 @@ const Sidebar: React.FC = () => {
         if (response.code == 'success') {
           toast.success(response.message)
 
+          setAuth(false)
           navigate('/login')
         } else {
           toast.error(response.message)
@@ -58,7 +61,7 @@ const Sidebar: React.FC = () => {
             <span>Clasificación</span>
           </Link>
 
-          <Link to={'#'} className={styles["aside-button"]}>
+          <Link to={'/settings'} className={styles["aside-button"]}>
             <i className="bx bxs-cog"></i>
             <span>Ajustes</span>
           </Link>

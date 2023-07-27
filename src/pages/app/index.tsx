@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
 									<section className={styles["profile-info"]}>
 										<div className={styles["profile-image"]}>
 											<img
-												src={`${import.meta.env.VITE_API_URL}${user.profileImgUrl}`}
+												src={`${import.meta.env.VITE_API_URL}/${user.avatar}`}
 												alt="PROFILE MAN AVATAR"
 											/>
 										</div>

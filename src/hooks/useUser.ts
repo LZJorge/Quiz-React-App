@@ -5,7 +5,7 @@ import { formatDate } from "../helpers/helpers"
 export interface User {
 	id: string
 	username: string
-	profileImgUrl: string
+	avatar: string
 	score: number
 	totalQuestions: number
 	successResponses: number
@@ -19,7 +19,7 @@ export const useUser = () => {
 	useEffect(() => {
 		const fetchUserData = async (): Promise<void> => {
 			try {
-                const response = await getData('/user/getCurrentUser')
+                const response = await getData('/user/current')
 
                 response.user.createdAt = formatDate(response.user.createdAt)
 

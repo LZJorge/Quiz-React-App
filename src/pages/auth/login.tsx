@@ -1,8 +1,10 @@
+import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { isAxiosError } from 'axios'
 import { Input } from '../../components/inputs'
 import Button from '../../components/button'
 import { SendLoginFormData } from '../../services/userServices'
+import { LoginContext } from '../../context/LoginContext'
 import { toast } from 'react-toastify'
 import styles from './style.module.scss' 
 
@@ -12,6 +14,7 @@ interface LoginForm {
 }
 
 const Login: React.FC = () => {
+  const { setAuth } = useContext(LoginContext)
   const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,6 +34,7 @@ const Login: React.FC = () => {
 
       toast.success(response.message)
 
+      setAuth(true)
       navigate('/')
     } catch(error) {
       if(isAxiosError(error)) {

@@ -13,7 +13,7 @@ interface Props {
 const UserBox: React.FC<Props> = ({ imageUrl, position, children }) => {
   return (
     <div className={`${styles['user-order']} ${styles[`user-order-${position}`]}`}>
-      <img src={`${import.meta.env.VITE_API_URL}${imageUrl}`} />
+      <img src={`${import.meta.env.VITE_API_URL}/${imageUrl}`} />
 
       { children }
 
@@ -40,7 +40,7 @@ const Leaderboard: React.FC = () => {
                   return
                 }
 
-                return <UserBox imageUrl={user.profileImgUrl} position={key += 1}>
+                return <UserBox imageUrl={user.avatar} position={key += 1}>
                   <h3>{user.username}</h3>
                   <h6>{user.score}</h6>
                 </UserBox>
