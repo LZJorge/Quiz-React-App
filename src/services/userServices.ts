@@ -12,20 +12,20 @@ interface userRegisterForm extends userForm {
 }
 
 export const SendLoginFormData = async (formData: userForm) => {
-	const response = await axios.post(`${API}/auth/login`, formData, { withCredentials: true })
-		.then((res) => {
-			return res.data
-		})
+  const response = await axios.post(`${API}/auth/login`, formData, { withCredentials: true })
+    .then((res) => {
+      return res.data
+    })
 
-	return response
+  return response
 }
 
 export const SendRegisterFormData = async (formData: userRegisterForm) => {
-	const response = await axios.post(`${API}/user/create`, formData)
-		.then((res) => {
-			return res.data
-		})
-	return response
+  const response = await axios.post(`${API}/user/create`, formData)
+    .then((res) => {
+      return res.data
+    })
+  return response
 }
 
 /***
@@ -39,27 +39,32 @@ type Endpoint =
 	'/user/logout'
 
 export const getData = async (endpoint: Endpoint) => {
-	const response = await axios.get(`${API}${endpoint}`, { withCredentials: true })
-		.then((res) => {
-			return res.data
-		})
-	return response
+  const response = await axios.get(`${API}${endpoint}`, { withCredentials: true })
+    .then((res) => {
+      return res.data
+    })
+  return response
 }
 
-export const deleteUser = async () => {
-	const { user } = await getData('/user/current')
+export interface DeleteFormData {
+  password: FormDataEntryValue
+}
 
-	const response = await axios.delete(`${API}/user/delete`, { 
-		withCredentials: true,
-		data: {
-			userID: user.id
-		}
-	})
+export const deleteUser = async (formData: DeleteFormData) => {
+  const { user } = await getData('/user/current')
+
+  const response = await axios.delete(`${API}/user/delete`, { 
+    withCredentials: true,
+    data: {
+      password: formData.password,
+      userID: user.id
+    }
+  })
     .then((res) => {
-        return res.data
+      return res.data
     })
 
-	return response
+  return response
 }
 
 /**
@@ -68,12 +73,12 @@ export const deleteUser = async () => {
  * @url '/avatars'
  */
 export const updateAvatar = async (newAvatar: string) => {
-    const response = await axios.put(`${API}/user/update/avatar`, { newAvatar }, {
-        withCredentials: true
-    })
+  const response = await axios.put(`${API}/user/update/avatar`, { newAvatar }, {
+    withCredentials: true
+  })
     .then((res) => {
-        return res.data
+      return res.data
     })
 
-    return response
+  return response
 }

@@ -1,8 +1,8 @@
+import { ReactNode } from 'react'
 import styles from './style.module.scss'
 
 interface Props {
-  text?: string
-	children?: string | any
+	children?: ReactNode
 	type: 'button' | 'submit'
   size: string
 	className?: string
@@ -11,7 +11,6 @@ interface Props {
 }
 
 const Button: React.FC<Props> = ({ 
-  text,
   children, 
   type, 
   className, 
@@ -28,7 +27,6 @@ const Button: React.FC<Props> = ({
       value={value}
       onClick={() => onClick?.(value)}
     >
-      { text }
       { children }
     </button>
   )

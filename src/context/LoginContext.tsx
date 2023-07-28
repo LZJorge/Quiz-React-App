@@ -1,4 +1,4 @@
-import { useState ,createContext, Dispatch, SetStateAction, ReactNode } from "react"
+import { useState ,createContext, Dispatch, SetStateAction, ReactNode } from 'react'
 
 interface LoginContextProps {
     auth: boolean
@@ -6,8 +6,8 @@ interface LoginContextProps {
   }
 
 export const LoginContext = createContext<LoginContextProps>({
-    auth: false,
-    setAuth: () => {}
+  auth: false,
+  setAuth: () => { return }
 })
 
 interface LoginProviderProps {
@@ -15,11 +15,11 @@ interface LoginProviderProps {
 }
 
 export const LoginProvider: React.FC<LoginProviderProps> = ({ children }) => {
-    const [auth, setAuth] = useState(false)
+  const [auth, setAuth] = useState(false)
 
-    return (
-        <LoginContext.Provider value={{ auth, setAuth }}>
-            { children }
-        </LoginContext.Provider>
-    )
+  return (
+    <LoginContext.Provider value={{ auth, setAuth }}>
+      { children }
+    </LoginContext.Provider>
+  )
 }

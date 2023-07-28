@@ -9,8 +9,8 @@ import { toast } from 'react-toastify'
 import styles from './style.module.scss' 
 
 interface LoginForm {
-  username: FormDataEntryValue | string
-  password: FormDataEntryValue | string
+  username: FormDataEntryValue
+  password: FormDataEntryValue
 }
 
 const Login: React.FC = () => {
@@ -68,12 +68,13 @@ const Login: React.FC = () => {
         />
 
         <Button 
-          children="Enviar"
           value='Enviar'
           type="submit"
           className="primary"
           size='large'
-        />
+        >
+          Enviar
+        </Button>
 
         <Link to="/register">Registrarse</Link>
       </form>

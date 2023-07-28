@@ -26,14 +26,15 @@ const Game: React.FC = () => {
 
   const renderOptionButtons = question.options.map((value: string, key: number) => {
     return <Button
-      children={value}
       type='button'
       className='primary'
       value={value}
       onClick={() => handleClick(value)}
       key={key}
       size='full'
-    />
+    >
+      {value}
+    </Button>
   })
 
   return (

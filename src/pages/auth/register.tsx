@@ -29,7 +29,7 @@ const Register: React.FC = () => {
     }
 
     try {
-      const response = await SendRegisterFormData(formData);
+      const response = await SendRegisterFormData(formData)
 
       toast.success(response.message)
 
@@ -78,12 +78,13 @@ const Register: React.FC = () => {
         />
 
         <Button 
-          children="Enviar"
           value="Enviar"
           type="submit"
           className="primary"
           size='large'
-        />
+        >
+          Enviar
+        </Button>
 
         <Link to="/login">Iniciar sesión</Link>
       </form>

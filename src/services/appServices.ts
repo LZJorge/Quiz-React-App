@@ -11,30 +11,30 @@ interface Question {
 }
 
 export const getQuestion = async (): Promise<Question>  => {
-    const response = await axios.get(`${API}/question`, { withCredentials: true })
+  const response = await axios.get(`${API}/question`, { withCredentials: true })
     .then((res) => {
-        const options = shuffleArray(res.data.options)
+      const options = shuffleArray(res.data.options)
 
-        return {
-            id: res.data.id,
-            title: res.data.question,
-            options: options,
-            difficulty: res.data.difficulty
-        }
+      return {
+        id: res.data.id,
+        title: res.data.question,
+        options: options,
+        difficulty: res.data.difficulty
+      }
     })
 
-    return response;
+  return response
 }
 
 export const sendAnswer = async (answer: string) => {
-    const response = await axios.put(`${API}/question`, { answer }, { 
-        withCredentials: true 
-    })
+  const response = await axios.put(`${API}/question`, { answer }, { 
+    withCredentials: true 
+  })
     .then((res) => {
-        return res.data
+      return res.data
     })
 
-    return response
+  return response
 }
 
 /**
@@ -49,14 +49,14 @@ export interface UpdatePasswordForm {
 }
 
 export const sendUpdatePasswordForm = async (formData: UpdatePasswordForm) => {
-    const response = await axios.put(`${API}/user/update/password`, formData, { 
-        withCredentials: true 
-    })
+  const response = await axios.put(`${API}/user/update/password`, formData, { 
+    withCredentials: true 
+  })
     .then((res) => {
-        return res.data
+      return res.data
     })
 
-    return response
+  return response
 }
 
 /**
@@ -65,12 +65,12 @@ export const sendUpdatePasswordForm = async (formData: UpdatePasswordForm) => {
  * @url '/avatars'
  */
 export const getAvatars = async () => {
-    const response = await axios.get(`${API}/avatars/get`, { 
-        withCredentials: true,
-    })
+  const response = await axios.get(`${API}/avatars/get`, { 
+    withCredentials: true,
+  })
     .then((res) => {
-        return res.data
+      return res.data
     })
 
-    return response
+  return response
 }

@@ -1,11 +1,11 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import useAvatars from "../../../../hooks/useAvatars"
-import { updateAvatar } from "../../../../services/userServices"
-import Layout from "../../../../components/layout"
-import Loader from "../../../../components/loader"
-import Button from "../../../../components/button"
-import { toast } from "react-toastify"
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useAvatars from '../../../../hooks/useAvatars'
+import { updateAvatar } from '../../../../services/userServices'
+import Layout from '../../../../components/layout'
+import Loader from '../../../../components/loader'
+import Button from '../../../../components/button'
+import { toast } from 'react-toastify'
 import styles from './style.module.scss'
 
 const UpdateAvatar: React.FC = () => {
@@ -48,28 +48,30 @@ const UpdateAvatar: React.FC = () => {
 
               <div className={styles['avatar-container']}>
                 { avatars.map((avatar) => (
-                <div key={avatar}>
-                  <label>
-                  <input
-                      type="radio"
-                      value={avatar}
-                      checked={selectedAvatar === avatar}
-                      onChange={handleAvatarChange}
-                      className={styles.check}
-                    />
+                  <div key={avatar}>
+                    <label>
+                      <input
+                        type="radio"
+                        value={avatar}
+                        checked={selectedAvatar === avatar}
+                        onChange={handleAvatarChange}
+                        className={styles.check}
+                      />
 
-                    <img src={`${import.meta.env.VITE_API_URL}${avatar}`} alt="Avatar" />
-                  </label>
-                </div>
-              ))}
+                      <img src={`${import.meta.env.VITE_API_URL}${avatar}`} alt="Avatar" />
+                    </label>
+                  </div>
+                ))}
               </div>
 
               <Button 
-                text="Guardar"
                 type="submit"
                 size="large"
                 className="primary"
-              />
+              >
+                Gurdar
+                <i className='bx bx-save'></i>
+              </Button>
             </form>
           </div>
         </>

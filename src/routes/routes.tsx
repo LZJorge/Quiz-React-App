@@ -14,24 +14,24 @@ import UpdatePassword from '../pages/app/settings/updatePassword'
 import DeleteUser from '../pages/app/settings/deleteUser'
 
 const Router = (): JSX.Element => {
-	return (
-		<Routes>
-			<Route path='/login' element={ <Login /> } />
-			<Route path='/register' element={ <Register /> } />
+  return (
+    <Routes>
+      <Route path='/login' element={ <Login /> } />
+      <Route path='/register' element={ <Register /> } />
 
-			<Route path='/' element={ <PrivateRoutes /> }>
-				<Route path='/' element={ <Profile /> } />
-				<Route path='/app' element={ <Game /> } />
-				<Route path='/leaderboard' element={ <Leaderboard /> } />
+      <Route path='/' element={ <PrivateRoutes /> }>
+        <Route path='/' element={ <Profile /> } />
+        <Route path='/app' element={ <Game /> } />
+        <Route path='/leaderboard' element={ <Leaderboard /> } />
 
-				<Route path='/settings' element={ <Settings /> } />
+        <Route path='/settings' element={ <Settings /> } />
 
-				<Route path='/settings/user/updateAvatar' element={ <UpdateAvatar /> } />
-				<Route path='/settings/user/updatePassword' element={ <UpdatePassword /> } />
-				<Route path='/settings/user/delete' element={ <DeleteUser /> } />
-			</Route>
-		</Routes>
-	)
+        <Route path='/settings/user/updateAvatar' element={ <UpdateAvatar /> } />
+        <Route path='/settings/user/updatePassword' element={ <UpdatePassword /> } />
+        <Route path='/settings/user/delete' element={ <DeleteUser /> } />
+      </Route>
+    </Routes>
+  )
 }
 
 export default Router

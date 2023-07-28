@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { getData } from "../services/userServices"
+import { useState, useEffect } from 'react'
+import { getData } from '../services/userServices'
 
 export interface User {
     username: string
@@ -10,24 +10,24 @@ export interface User {
 }
 
 export const useLeaderboard = () => {
-	const [isLoading, setIsLoading] = useState<boolean>(true)
-	const [leaderboard, setLeaderboard] = useState<User[]>()
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [leaderboard, setLeaderboard] = useState<User[]>()
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await getData('/user/getLeaderboard')
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getData('/user/getLeaderboard')
 
-				setLeaderboard(response)
-			} catch (err) {
-				setLeaderboard({} as any)
-			} finally {
-				setIsLoading(false)
-			}
-		}
+        setLeaderboard(response)
+      } catch (err) {
+        setLeaderboard([])
+      } finally {
+        setIsLoading(false)
+      }
+    }
 
-		fetchData()
-	}, [])
+    fetchData()
+  }, [])
 
-	return { leaderboard, isLoading }
+  return { leaderboard, isLoading }
 }

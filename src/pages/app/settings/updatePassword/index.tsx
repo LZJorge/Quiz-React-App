@@ -71,12 +71,13 @@ const UpdatePassword: React.FC = () => {
           />
 
           <Button 
-            text='Guardar'
-            children={<i className='bx bx-save'></i>}
             type='submit'
             size='medium'
             className='primary'
-          />
+          >
+            Gurdar
+            <i className='bx bx-save'></i>
+          </Button>
         </form>
       </div>
     </Layout>

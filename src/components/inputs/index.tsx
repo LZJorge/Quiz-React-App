@@ -25,7 +25,7 @@ export const Input: React.FC<Props> = ({ type, name, placeholder, required, icon
       <label 
         htmlFor={name} 
         className="label">
-          {label}
+        {label}
       </label>
 
       <span className='input-icon'>

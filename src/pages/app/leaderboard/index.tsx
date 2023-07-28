@@ -33,17 +33,23 @@ const Leaderboard: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <div className={styles["top-3"]}>
+          <div className={styles['top-3']}>
             {leaderboard && (
               leaderboard.map((user: User, key: number) => {
                 if(key > 2) {
                   return
                 }
 
-                return <UserBox imageUrl={user.avatar} position={key += 1}>
-                  <h3>{user.username}</h3>
-                  <h6>{user.score}</h6>
-                </UserBox>
+                return (
+                  <UserBox 
+                    imageUrl={user.avatar} 
+                    position={key += 1}
+                    key={key}
+                  >
+                    <h3>{user.username}</h3>
+                    <h6>{user.score}</h6>
+                  </UserBox>
+                )
               })
             )}
           </div>
@@ -58,16 +64,18 @@ const Leaderboard: React.FC = () => {
             </thead>
             {leaderboard && (
               leaderboard.map((user: User, key: number) => {
-                return <tr>
-                  { key === 0 ? 
-                    (<td className={styles.icon}><i className="bx bxs-crown"></i></td>) : 
-                    (<td></td>) 
-                  }
-                  <td className={`${styles['table-position']} ${styles[`position-${key}`]}`}>{key += 1}</td>
-                  <td className={styles['table-username']}>{user.username}</td>
-                  <td> {user.successResponses} </td>
-                  <td className={styles.score}>{user.score}</td>
-                </tr>
+                return (
+                  <tr key={key}>
+                    { key === 0 ? 
+                      (<td className={styles.icon}><i className="bx bxs-crown"></i></td>) : 
+                      (<td></td>) 
+                    }
+                    <td className={`${styles['table-position']} ${styles[`position-${key}`]}`}>{key += 1}</td>
+                    <td className={styles['table-username']}>{user.username}</td>
+                    <td> {user.successResponses} </td>
+                    <td className={styles.score}>{user.score}</td>
+                  </tr>
+                )
               })
             )}
           </table>

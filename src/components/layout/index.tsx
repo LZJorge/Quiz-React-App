@@ -1,7 +1,7 @@
-import { useContext, ReactNode } from "react"
-import { SidebarContext } from "../../context/SidebarContext"
-import Sidebar from "../sidebar"
-import Navbar from "../navbar"
+import { useContext, ReactNode } from 'react'
+import { SidebarContext } from '../../context/SidebarContext'
+import Sidebar from '../sidebar'
+import Navbar from '../navbar'
 import styles from './style.module.scss'
 
 interface LayoutProps {
@@ -13,14 +13,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className={styles.box}>
-        <Sidebar />
+      <Sidebar />
 
-        <div className={`${styles.content}
+      <div className={`${styles.content}
           ${sidebarState === 'open' ? styles['content--aside-open'] : styles['content--aside-closed'] }
         `}>
-          <Navbar/>
-          { children }
-        </div>
+        <Navbar/>
+        { children }
+      </div>
     </div>
   )
 }
