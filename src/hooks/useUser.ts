@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { getData } from '../services/userServices'
-import { formatDate } from '../helpers/helpers'
+import { getData } from '@/services/userServices'
+import { formatDate } from '@/helpers/helpers'
 
 export interface User {
 	id: string

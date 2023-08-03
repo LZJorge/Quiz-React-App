@@ -1,10 +1,10 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { isAxiosError } from 'axios'
-import { Input } from '../../components/inputs'
-import Button from '../../components/button'
-import { SendLoginFormData } from '../../services/userServices'
-import { LoginContext } from '../../context/LoginContext'
+import { Input } from '@/components/inputs'
+import Button from '@/components/button'
+import { SendLoginFormData } from '@/services/userServices'
+import { LoginContext } from '@/context/LoginContext'
 import { toast } from 'react-toastify'
 import styles from './style.module.scss' 
 
@@ -15,10 +15,14 @@ interface LoginForm {
 
 const Login: React.FC = () => {
   const { setAuth } = useContext(LoginContext)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if(isLoading) return
+
+    setIsLoading(true)
 
     const { username, password } = Object.fromEntries(
       new window.FormData(event.target as HTMLFormElement)
@@ -38,8 +42,14 @@ const Login: React.FC = () => {
       navigate('/')
     } catch(error) {
       if(isAxiosError(error)) {
-        toast.error(error.response?.data.message)
+        if(error.response?.data.errors) {
+          toast.error(error.response.data.errors[0].msg)
+        } else {
+          toast.error(error.response?.data.message)
+        }
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -52,28 +62,28 @@ const Login: React.FC = () => {
         <h2 className="title">Iniciar Sesión</h2>
 
         <Input 
-          type="text"
-          name="username"
-          label="Nombre de usuario"
-          iconClassName="user-circle"
+          type='text'
+          name='username'
+          label='Nombre de usuario'
+          iconClassName='user-circle'
           required={true}
         />
 
         <Input 
-          type="password"
-          name="password"
-          label="Contraseña"
-          iconClassName="lock"
+          type='password'
+          name='password'
+          label='Contraseña'
+          iconClassName='lock'
           required={true}
         />
 
         <Button 
           value='Enviar'
-          type="submit"
-          className="primary"
+          type={ isLoading ? ('button') : ('submit')}
+          className='primary'
           size='large'
         >
-          Enviar
+          { isLoading ? (<i className='bx bx-loader-alt bx-spin'></i>) : ('Enviar')}
         </Button>
 
         <Link to="/register">Registrarse</Link>

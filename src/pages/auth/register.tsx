@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { isAxiosError } from 'axios'
-import { Input } from '../../components/inputs'
-import Button from '../../components/button'
-import { SendRegisterFormData } from '../../services/userServices'
+import { Input } from '@/components/inputs'
+import Button from '@/components/button'
+import { SendRegisterFormData } from '@/services/userServices'
 import { toast } from 'react-toastify'
 import styles from './style.module.scss'
 
@@ -14,9 +15,12 @@ interface RegisterForm {
 
 const Register: React.FC = () => {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if(isLoading) return
+    setIsLoading(true)
 
     const { username, password, passwordConfirm } = Object.fromEntries(
       new window.FormData(event.target as HTMLFormElement)
@@ -42,6 +46,8 @@ const Register: React.FC = () => {
           toast.error(error.response?.data.message)
         }
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -79,11 +85,11 @@ const Register: React.FC = () => {
 
         <Button 
           value="Enviar"
-          type="submit"
+          type={ isLoading ? ('button') : ('submit')}
           className="primary"
           size='large'
         >
-          Enviar
+          { isLoading ? (<i className='bx bx-loader-alt bx-spin'></i>) : ('Enviar')}
         </Button>
 
         <Link to="/login">Iniciar sesión</Link>

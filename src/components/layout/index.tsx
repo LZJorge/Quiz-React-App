@@ -1,5 +1,5 @@
 import { useContext, ReactNode } from 'react'
-import { SidebarContext } from '../../context/SidebarContext'
+import { SidebarContext } from '@/context/SidebarContext'
 import Sidebar from '../sidebar'
 import Navbar from '../navbar'
 import styles from './style.module.scss'

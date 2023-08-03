@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { LoginContext } from '../../context/LoginContext'
+import { LoginContext } from '@/context/LoginContext'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const PrivateRoutes: React.FC = () => {

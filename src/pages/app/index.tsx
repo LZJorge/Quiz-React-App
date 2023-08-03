@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { useUser } from '../../hooks/useUser'
-import Layout from '../../components/layout'
-import Loader from '../../components/loader'
+import { useUser } from '@/hooks/useUser'
+import Layout from '@/components/layout'
+import Loader from '@/components/loader'
 import styles from './style.module.scss'
 
 const Profile: React.FC = () => {

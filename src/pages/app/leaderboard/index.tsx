@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import Layout from '../../../components/layout'
-import { useLeaderboard, User } from '../../../hooks/useLeaderboard'
-import Loader from '../../../components/loader'
+import Layout from '@/components/layout'
+import { useLeaderboard, User } from '@/hooks/useLeaderboard'
+import Loader from '@/components/loader'
 import styles from './style.module.scss'
 
 interface Props {

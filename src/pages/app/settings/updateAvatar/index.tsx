@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useAvatars from '../../../../hooks/useAvatars'
-import { updateAvatar } from '../../../../services/userServices'
-import Layout from '../../../../components/layout'
-import Loader from '../../../../components/loader'
-import Button from '../../../../components/button'
+import useAvatars from '@/hooks/useAvatars'
+import { updateAvatar } from '@/services/userServices'
+import Layout from '@/components/layout'
+import Loader from '@/components/loader'
+import Button from '@/components/button'
 import { toast } from 'react-toastify'
 import styles from './style.module.scss'
 
@@ -42,38 +42,40 @@ const UpdateAvatar: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <div className={styles.container}>
-            <form onSubmit={handleSubmitForm} className={styles.box}>
-              <h2>Selecciona tu avatar</h2>
+          { avatars && (
+            <div className={styles.container}>
+              <form onSubmit={handleSubmitForm} className={styles.box}>
+                <h2>Selecciona tu avatar</h2>
 
-              <div className={styles['avatar-container']}>
-                { avatars.map((avatar) => (
-                  <div key={avatar}>
-                    <label>
-                      <input
-                        type="radio"
-                        value={avatar}
-                        checked={selectedAvatar === avatar}
-                        onChange={handleAvatarChange}
-                        className={styles.check}
-                      />
+                <div className={styles['avatar-container']}>
+                  { avatars.map((avatar) => (
+                    <div key={avatar}>
+                      <label>
+                        <input
+                          type="radio"
+                          value={avatar}
+                          checked={selectedAvatar === avatar}
+                          onChange={handleAvatarChange}
+                          className={styles.check}
+                        />
 
-                      <img src={`${import.meta.env.VITE_API_URL}${avatar}`} alt="Avatar" />
-                    </label>
-                  </div>
-                ))}
-              </div>
+                        <img src={`${import.meta.env.VITE_API_URL}${avatar}`} alt="Avatar" />
+                      </label>
+                    </div>
+                  ))}
+                </div>
 
-              <Button 
-                type="submit"
-                size="large"
-                className="primary"
-              >
-                Gurdar
-                <i className='bx bx-save'></i>
-              </Button>
-            </form>
+                <Button 
+                  type="submit"
+                  size="large"
+                  className="primary"
+                >
+                  Gurdar
+                  <i className='bx bx-save'></i>
+                </Button>
+              </form>
           </div>
+          )}
         </>
       )}
     </Layout>

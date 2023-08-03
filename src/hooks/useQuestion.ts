@@ -1,32 +1,28 @@
 import { useState, useEffect } from 'react'
-import { getQuestion } from '../services/appServices'
+import { getQuestion, Question } from '@/services/appServices'
 
-interface Question {
-    id: number
-    title: string
-    options: string[]
-    difficulty: string
-}
-
-export const useQuestion = () => {
+export const useQuestion = (category?: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
     
-  const [question, setQuestion] = useState<Question>({
+  const [question, setQuestion] = useState<Question | undefined>({
     id: 0,
     title: '',
     options: [],
-    difficulty: ''
+    difficulty: '',
+    category: '',
+    categoryImg: ''
   })
   const [newQuestion, setNewQuestion] = useState<boolean>(true)
 
   useEffect(() => {
     const fetchQuestionData = async () => {
       try {
-        const response: Question = await getQuestion()
+        const response: Question = category ?
+          await getQuestion(category) : await getQuestion()
     
         setQuestion(response)
       } catch(err) {
-        setQuestion({} as Question)
+        setQuestion(undefined)
       } finally {
         setNewQuestion(false)
         setIsLoading(false)

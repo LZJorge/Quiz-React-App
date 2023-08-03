@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react'
-import { getAvatars } from '../services/appServices'
+import { getAvatars } from '@/services/appServices'
 
 const useAvatars = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [avatars, setAvatars] = useState<string[]>([])
+  const [avatars, setAvatars] = useState<string[] | undefined>([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await getAvatars()
-        console.log(response)
 
         setAvatars(response)
       } catch(error) {
-        setAvatars([])
+        setAvatars(undefined)
       } finally {
         setIsLoading(false)
       }

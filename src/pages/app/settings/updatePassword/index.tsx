@@ -1,11 +1,11 @@
-import Layout from '../../../../components/layout'
-import { Input } from '../../../../components/inputs'
-import Button from '../../../../components/button'
+import Layout from '@/components/layout'
+import { Input } from '@/components/inputs'
+import Button from '@/components/button'
 import styles from './style.module.scss'
 import { isAxiosError } from 'axios'
 import { 
   sendUpdatePasswordForm, 
-  UpdatePasswordForm } from '../../../../services/appServices'
+  UpdatePasswordForm } from '@/services/appServices'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 

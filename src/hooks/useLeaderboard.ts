@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react'
 import { getData } from '../services/userServices'
 
 export interface User {
-    username: string
+  username: string
 	avatar: string
-    score: number
+  score: number
 	successResponses: number
-    createdAt: string
+  createdAt: string
 }
 
 export const useLeaderboard = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [leaderboard, setLeaderboard] = useState<User[]>()
+  const [leaderboard, setLeaderboard] = useState<User[] | undefined>()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +20,7 @@ export const useLeaderboard = () => {
 
         setLeaderboard(response)
       } catch (err) {
-        setLeaderboard([])
+        setLeaderboard(undefined)
       } finally {
         setIsLoading(false)
       }

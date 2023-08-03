@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import Layout from '../../../components/layout'
+import Layout from '@/components/layout'
 import styles from './style.module.scss'
 
 const Settings: React.FC = () => {
