@@ -11,7 +11,7 @@
     .user-order {
         padding: 8px 20px 6px;
         background-color: $white;
-        border-radius: 8px 8px 0 0;
+        border-radius: 8px;
         box-shadow: $box-shadow;
         width: 33%;
 
@@ -82,6 +82,13 @@
     }
 }
 
+.table-container {
+    padding-bottom: 25px;
+    min-width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -112,7 +119,6 @@ table {
     tr {
         td {
             padding: 8px;
-            margin: 5px;
             font-size: 16px;
             font-weight: 500;
             text-align: center;
@@ -135,5 +141,55 @@ table {
 
     tr:nth-child(odd) {
         background-color: #efefef;
+    }
+}
+
+@media screen and (max-width: $responsive-width-medium) {
+    .top-3 {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 35px;
+
+        .user-order {
+            width: 45%;
+            max-width: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .user-order-1 {
+            order: 1;
+        }
+    }
+
+    .table-container {
+        width: 700px;
+        
+        table {
+            thead {
+                font-size: 12px;
+            }
+    
+            tbody {
+                tr {
+                    td {
+                        font-size: 14px;
+                    }
+    
+                    .score {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $responsive-width-small) {
+    .top-3 .user-order {
+        width: 80%;
     }
 }

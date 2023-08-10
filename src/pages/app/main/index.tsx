@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Layout from "@/components/layout"
 import Loader from "@/components/loader"
 import useCategory from "@/hooks/useCategories"
+import { CATEGORY_PARAM,API } from "@/consts"
 import styles from './index.module.scss'
 
 const SelectGame: React.FC = () => {
@@ -16,8 +17,8 @@ const SelectGame: React.FC = () => {
           { categories && (
             categories.map( (value, key) => {
               return (
-                <Link to={`/app/play?c=${value.slug}`} key={key} className={styles['category-box']}>
-                  <img src={`${import.meta.env.VITE_API_URL}/${value.imgUrl}`} alt=""/>
+                <Link to={`/app/play?${CATEGORY_PARAM}=${value.slug}`} key={key} className={styles['category-box']}>
+                  <img src={`${API}/${value.imgUrl}`} alt=""/>
 
                   { value.name }
                 </Link>

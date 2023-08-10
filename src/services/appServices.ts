@@ -1,8 +1,14 @@
 import axios from 'axios'
 import { shuffleArray } from '@/helpers/helpers'
+import { API } from '@/consts'
 
-const API = import.meta.env.VITE_API_URL
-
+/**
+ * Service for getting random question
+ * 
+ * @url /question/:category
+ * @method Get
+ * @param category
+ */
 export interface Question {
   id: number
   title: string
@@ -13,12 +19,13 @@ export interface Question {
 }
 
 export const getQuestion = async (category?: string): Promise<Question>  => {
-  const response = category ? 
-    await axios.get(`${API}/question/${category}`, { withCredentials: true })
+  const url = category ? `${API}/question/${category}` : `${API}/question`
+
+  const response = await axios.get(url, { withCredentials: true })
     .then((res) => {
       const options = shuffleArray(res.data.options)
 
-      return {
+      const mappedQuestion = {
         id: res.data.id,
         title: res.data.question,
         options: options,
@@ -26,21 +33,9 @@ export const getQuestion = async (category?: string): Promise<Question>  => {
         category: res.data.Category.name,
         categoryImg: res.data.Category.imgUrl
       }
+
+      return mappedQuestion
     })
-    :
-    await axios.get(`${API}/question`, { withCredentials: true })
-    .then((res) => {
-      const options = shuffleArray(res.data.options)
-
-      return {
-        id: res.data.id,
-        title: res.data.question,
-        options: options,
-        difficulty: res.data.difficulty,
-        category: res.data.Category.name,
-        categoryImg: res.data.Category.imgUrl
-      }
-    })    
 
   return response
 }
@@ -95,7 +90,17 @@ export const getCategories = async (): Promise<Category[]> => {
     withCredentials: true
   })
   .then((res) => {
-    return res.data
+
+    const mappedCategories = res.data.categories.map((category: Category) => {
+      return {
+        id: category.id,
+        name: category.name,
+        imgUrl: category.imgUrl,
+        slug: category.slug
+      }
+    })
+
+    return mappedCategories
   })
 
   return response
@@ -111,7 +116,7 @@ export const getAvatars = async () => {
     withCredentials: true,
   })
   .then((res) => {
-    return res.data
+    return res.data.avatars
   })
 
   return response

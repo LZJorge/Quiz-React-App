@@ -3,6 +3,7 @@ import { useUser } from '@/hooks/useUser'
 import Layout from '@/components/layout'
 import Loader from '@/components/loader'
 import styles from './style.module.scss'
+import { API } from '@/consts'
 
 const Profile: React.FC = () => {
   const { user, isLoading } = useUser()
@@ -27,7 +28,7 @@ const Profile: React.FC = () => {
                   <section className={styles['profile-info']}>
                     <div className={styles['profile-image']}>
                       <img
-                        src={`${import.meta.env.VITE_API_URL}/${user.avatar}`}
+                        src={`${API}/${user.avatar}`}
                         alt="PROFILE MAN AVATAR"
                       />
                     </div>

@@ -20,6 +20,7 @@
     i {
         transition: all .1s;
         font-size: 24px;
+        margin-left: 10px;
     }
 }
 
@@ -91,4 +92,5 @@
 
 .full {
     width: $button-full-width;
+    padding: 5px 15px;
 }

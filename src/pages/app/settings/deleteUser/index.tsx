@@ -80,7 +80,7 @@ const DeleteUser: React.FC = () => {
           <Button
             className="danger"
             type="submit"
-            size="large"
+            size="medium"
           >
             Eliminar
           </Button>

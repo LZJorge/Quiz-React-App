@@ -1,3 +1,5 @@
+@import '@/style/variables';
+
 .area{
     background: #4e54c8;  
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
@@ -102,5 +104,10 @@
         opacity: 0;
         border-radius: 50%;
     }
+}
 
+@media screen and (max-width: $responsive-width-small) {
+    .circles {
+        display: none;
+    }
 }

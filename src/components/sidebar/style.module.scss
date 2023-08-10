@@ -1,7 +1,7 @@
 @import '@/style/variables';
 
 aside {
-    width: 176px;
+    width: $aside-width-open;
     height: 100%;
     background-color: $white;
 
@@ -82,7 +82,7 @@ aside {
 }
 
 .aside-closed {
-    width: #{$aside-width-closed};
+    width: $aside-width-closed;
 
     .aside-title {
         h1 {
@@ -110,5 +110,24 @@ aside {
 
      .aside-extra {
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: $responsive-width-medium) {
+    aside {
+        .aside-buttons .aside-button {
+            font-size: 12px;
+            padding: 10px 8px;
+        }
+    }
+    
+    .aside-open {
+        width: calc($aside-width-open - 10px);
+        position: absolute;
+        z-index: 100;
+    }
+
+    .aside-closed {
+        width: calc($aside-width-closed - 10px);
     }
 }

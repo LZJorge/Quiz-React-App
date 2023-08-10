@@ -5,11 +5,12 @@ import Button from '@/components/button'
 import Layout from '@/components/layout'
 import Loader from '@/components/loader'
 import { useQuestion } from '@/hooks/useQuestion'
+import { API,CATEGORY_PARAM, QUESTION_RESPONSE } from '@/consts'
 import styles from './style.module.scss'
 
 const Game: React.FC = () => {
   const [query] = useSearchParams()
-  const categoryParam = query.get('c')
+  const categoryParam = query.get(CATEGORY_PARAM)
   const { question, isLoading, setIsLoading, setNewQuestion } = categoryParam ?
     useQuestion(categoryParam) : useQuestion()
 
@@ -19,7 +20,7 @@ const Game: React.FC = () => {
 
     const response = await sendAnswer(value)
 
-    if (response.code == 'success') {
+    if (response.code == QUESTION_RESPONSE.SUCCESS) {
       toast.success(response.message)
     } else {
       toast.error(response.message)
@@ -40,7 +41,7 @@ const Game: React.FC = () => {
 
           <div className={styles['category-box']}>
             <img 
-              src={`${import.meta.env.VITE_API_URL}/${question.categoryImg}`} 
+              src={`${API}/${question.categoryImg}`} 
               alt="" 
             />
             <h3>{question.category}</h3>

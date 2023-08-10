@@ -29,3 +29,9 @@
     font-weight: 700;
     color: $danger;
 }
+
+@media screen and (max-width: $responsive-width-medium) {
+    .box {
+        grid-template-columns: 1fr;
+    }
+}

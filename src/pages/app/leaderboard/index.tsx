@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import Layout from '@/components/layout'
 import { useLeaderboard, User } from '@/hooks/useLeaderboard'
 import Loader from '@/components/loader'
+import { API } from '@/consts'
 import styles from './style.module.scss'
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 const UserBox: React.FC<Props> = ({ imageUrl, position, children }) => {
   return (
     <div className={`${styles['user-order']} ${styles[`user-order-${position}`]}`}>
-      <img src={`${import.meta.env.VITE_API_URL}/${imageUrl}`} />
+      <img src={`${API}/${imageUrl}`} />
 
       { children }
 
@@ -33,7 +34,7 @@ const Leaderboard: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <div className={styles['top-3']}>
+          <section className={styles['top-3']}>
             {leaderboard && (
               leaderboard.map((user: User, key: number) => {
                 if(key > 2) {
@@ -52,33 +53,39 @@ const Leaderboard: React.FC = () => {
                 )
               })
             )}
-          </div>
+          </section>
 
-          <table>
-            <thead>
-              <th></th>
-              <th> Puesto </th>
-              <th> Usuario </th>
-              <th> Respuestas acertadas </th>
-              <th> Puntuación </th>
-            </thead>
-            {leaderboard && (
-              leaderboard.map((user: User, key: number) => {
-                return (
-                  <tr key={key}>
-                    { key === 0 ? 
-                      (<td className={styles.icon}><i className="bx bxs-crown"></i></td>) : 
-                      (<td></td>) 
-                    }
-                    <td className={`${styles['table-position']} ${styles[`position-${key}`]}`}>{key += 1}</td>
-                    <td className={styles['table-username']}>{user.username}</td>
-                    <td> {user.successResponses} </td>
-                    <td className={styles.score}>{user.score}</td>
-                  </tr>
-                )
-              })
-            )}
-          </table>
+          <section className={styles['table-container']}>
+            <table>
+              <thead>
+                <tr>
+                  <th>{/* Column for crown icon */}</th>
+                  <th>Puesto</th>
+                  <th>Usuario</th>
+                  <th>Respuestas acertadas</th>
+                  <th>Puntuación</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leaderboard && (
+                  leaderboard.map((user, key) => {
+                    return (
+                      <tr key={key}>
+                        {key === 0 ? 
+                          (<td className={styles.icon}><i className="bx bxs-crown"></i></td>) : 
+                          (<td></td>) 
+                        }
+                        <td className={`${styles['table-position']} ${styles[`position-${key}`]}`}>{key + 1}</td>
+                        <td className={styles['table-username']}>{user.username}</td>
+                        <td>{user.successResponses}</td>
+                        <td className={styles.score}>{user.score}</td>
+                      </tr>
+                    )
+                  })
+                )}
+              </tbody>
+            </table>
+          </section>
         </>
       )}
     </Layout>

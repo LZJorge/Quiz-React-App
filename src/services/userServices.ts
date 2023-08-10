@@ -1,17 +1,12 @@
 import axios from 'axios'
+import { API } from '@/consts'
 
-const API = import.meta.env.VITE_API_URL
-
-interface userForm {
-	username: FormDataEntryValue | string
-	password: FormDataEntryValue | string
+export interface UserForm {
+	username: FormDataEntryValue
+	password: FormDataEntryValue
 }
 
-interface userRegisterForm extends userForm {
-	passwordConfirm: FormDataEntryValue | string
-}
-
-export const SendLoginFormData = async (formData: userForm) => {
+export const SendLoginFormData = async (formData: UserForm) => {
   const response = await axios.post(`${API}/auth/login`, formData, { withCredentials: true })
     .then((res) => {
       return res.data
@@ -20,7 +15,11 @@ export const SendLoginFormData = async (formData: userForm) => {
   return response
 }
 
-export const SendRegisterFormData = async (formData: userRegisterForm) => {
+export interface UserRegisterForm extends UserForm {
+	passwordConfirm: FormDataEntryValue
+}
+
+export const SendRegisterFormData = async (formData: UserRegisterForm) => {
   const response = await axios.post(`${API}/user/create`, formData)
     .then((res) => {
       return res.data

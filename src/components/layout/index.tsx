@@ -15,12 +15,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className={styles.box}>
       <Sidebar />
 
-      <div className={`${styles.content}
+      <main className={`${styles.content}
           ${sidebarState === 'open' ? styles['content--aside-open'] : styles['content--aside-closed'] }
         `}>
-        <Navbar/>
+        <Navbar />
         { children }
-      </div>
+      </main>
     </div>
   )
 }

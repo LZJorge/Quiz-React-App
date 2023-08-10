@@ -3,15 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { isAxiosError } from 'axios'
 import { Input } from '@/components/inputs'
 import Button from '@/components/button'
-import { SendRegisterFormData } from '@/services/userServices'
+import { SendRegisterFormData, UserRegisterForm } from '@/services/userServices'
 import { toast } from 'react-toastify'
 import styles from './style.module.scss'
-
-interface RegisterForm {
-  username: FormDataEntryValue | string
-  password: FormDataEntryValue | string
-  passwordConfirm: FormDataEntryValue | string
-}
 
 const Register: React.FC = () => {
   const navigate = useNavigate()
@@ -26,7 +20,7 @@ const Register: React.FC = () => {
       new window.FormData(event.target as HTMLFormElement)
     )
     
-    const formData: RegisterForm = {
+    const formData: UserRegisterForm = {
       username,
       password,
       passwordConfirm

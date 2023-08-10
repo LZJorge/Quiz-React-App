@@ -1,4 +1,4 @@
-@import '../../../../style/variables';
+@import '@/style/variables';
 
 .category-box {
     height: 56px;
@@ -16,6 +16,7 @@
 }
 
 .question-box {
+    width: 100%;
     min-height: calc(16px * 3 * 2);
     margin: auto;
     box-shadow: $box-shadow;
@@ -93,5 +94,24 @@
         padding: 4px;
         font-size: 16px;
         box-shadow: $box-shadow;
+    }
+}
+
+@media screen and (max-width: $responsive-width-medium) {
+    .question-box {
+        min-height: calc(14px * 5 * 2);
+
+        h3 {
+            font-size: 14px;
+        }
+    }
+
+    .option-buttons {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 85px;
+
+        button {
+            font-size: 14px;
+        }
     }
 }

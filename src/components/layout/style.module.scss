@@ -12,7 +12,7 @@
     height: 90vh;
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.176) 0px 16px 48px 0px;
+    box-shadow: rgba(0, 0, 0, 0.276) 0px 16px 48px 0px;
 
     .content {
         height: 100%;
@@ -22,13 +22,40 @@
         float: right;
         position: relative;
         overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     .content--aside-open {
-        width: calc(100% - #{$aside-width-open});
+        width: calc(100% - $aside-width-open);
     }
 
     .content--aside-closed {
-        width: calc(100% - #{$aside-width-closed});
+        width: calc(100% - $aside-width-closed + 10px);
+    }
+}
+
+@media screen and (max-width: $responsive-width-medium) {
+    .box {
+        height: 96vh;
+    }
+
+    .content {
+        margin-top: 60px;
+    }
+
+    .content--aside-open {
+        width: calc(100% - $aside-width-closed) !important;
+
+        nav {
+            width: calc(100% - $aside-width-open);
+        }
+    }
+}
+
+@media screen and (max-width: $responsive-width-small) {
+    .box {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
     }
 }

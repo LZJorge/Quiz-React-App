@@ -26,3 +26,15 @@
         margin: 15px 0 25px;
     }
 }
+
+@media screen and (max-width: $responsive-width-medium) {
+    .box {
+        width: auto;
+        padding: 5px 15px;
+        min-width: 240px;
+
+        h2 {
+            font-size: 18px;
+        }
+    }
+}

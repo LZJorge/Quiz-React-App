@@ -3,6 +3,7 @@
 .box {
     width: 70%;
     margin: 60px auto;
+    padding: 25px 35px;
     text-align: center;
     background-color: $white;
     box-shadow: $box-shadow;
@@ -11,6 +12,19 @@
 
     .title {
         font-size: 30px;
+        padding-top: 25px;
         margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: $responsive-width-medium) {
+    .box {
+        width: auto;
+        padding: 5px 15px;
+        min-width: 240px;
+
+        .title {
+            font-size: 24px;
+        }
     }
 }

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { SidebarContext } from '@/context/SidebarContext'
 import Button from '../button'
-import style from './style.module.scss'
+import styles from './style.module.scss'
 
 const Navbar: React.FC = () => {
   const { sidebarState, setSidebarState } = useContext(SidebarContext)
@@ -11,11 +11,10 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <nav className={style.nav}>
+    <nav className={styles.nav}>
       <div>
         <Button
           type="button"
-          value=""
           onClick={ toggleSidebar }
           size="full">
 
@@ -26,11 +25,10 @@ const Navbar: React.FC = () => {
       <div>
         <Button
           type="button"
-          value=""
           className="secondary"
-          size="medium"
+          size="full"
         >
-          Guía de juego
+          <span className={styles['guide-button-text']}> Guía de juego </span>
           <i className="bx bxs-help-circle"></i>
         </Button>
       </div>

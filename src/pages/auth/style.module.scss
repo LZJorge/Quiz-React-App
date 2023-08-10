@@ -36,3 +36,15 @@
         align-items: center;
     }
 }
+
+@media screen and (max-width: $responsive-width-medium) {
+    .form-box {
+        width: 340px;
+    }
+}
+
+@media screen and (max-width: $responsive-width-small) {
+    .form-box {
+        width: 300px;
+    }
+}
