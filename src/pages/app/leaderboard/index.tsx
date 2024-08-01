@@ -63,7 +63,7 @@ const Leaderboard: React.FC = () => {
                   <th>Puesto</th>
                   <th>Usuario</th>
                   <th>Respuestas acertadas</th>
-                  <th>Puntuación</th>
+                  <th>Puntos</th>
                 </tr>
               </thead>
               <tbody>

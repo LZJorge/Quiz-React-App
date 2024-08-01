@@ -1,0 +1,93 @@
+@import '@/style/variables';
+
+.game-guide {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .game-guide-content {
+        width: auto;
+        max-width: 600px;
+        max-height: 94vh;
+        overflow-y: scroll;
+        padding: 20px;
+        background-color: $white;
+        border-radius: 4px;
+        padding: 32px;
+        box-shadow: $box-shadow;
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            width: 100%;
+
+            .close {
+                width: 36px;
+                height: 36px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                font-size: 24px;
+                padding: 12px;
+                background-color: rgb(95, 95, 95);
+                outline: none;
+                border: none;
+                cursor: pointer;
+                box-shadow: $box-shadow;
+
+                transition: all .1s;
+
+                &:hover {
+                    background-color: darken(rgb(95, 95, 95), 10%);
+                }
+
+                &:active {
+                    background-color: darken(rgb(95, 95, 95), 20%);
+                }
+
+                i {
+                    color: $white;
+                }
+            }
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+
+            .number {
+                font-size: 16px;
+                font-weight: 700;
+                padding: 4px 12px;
+                border-radius: 8px;
+                background-color: $secondary;
+                margin-right: 8px;
+                color: $white;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $responsive-width-medium) {
+    .game-guide {
+        .game-guide-content {
+            max-width: 90vw;
+            padding: 24px;
+        }
+    }
+}

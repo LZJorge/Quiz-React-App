@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify'
 import Router from './routes/routes'
 import { SidebarProvider } from './context/SidebarContext'
 import { LoginProvider } from './context/LoginContext'
+import { GuideProvider } from './context/GameGuideContext'
 import 'react-toastify/dist/ReactToastify.min.css'
 import './global.scss'
 
@@ -13,7 +14,9 @@ const App = () => {
 
       <LoginProvider>
         <SidebarProvider>
-          <Router />
+          <GuideProvider>
+            <Router />
+          </GuideProvider>
         </SidebarProvider>
       </LoginProvider>
 

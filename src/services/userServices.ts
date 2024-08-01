@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API } from '@/consts'
+import { API, AUTHORIZATION } from '@/consts'
 
 export interface UserForm {
 	username: FormDataEntryValue
@@ -38,7 +38,8 @@ type Endpoint =
 	'/user/logout'
 
 export const getData = async (endpoint: Endpoint) => {
-  const response = await axios.get(`${API}${endpoint}`, { withCredentials: true })
+  const response = await axios
+    .get(`${API}${endpoint}`, { withCredentials: true, headers: AUTHORIZATION })
     .then((res) => {
       return res.data
     })
@@ -54,6 +55,7 @@ export const deleteUser = async (formData: DeleteFormData) => {
 
   const response = await axios.delete(`${API}/user/delete`, { 
     withCredentials: true,
+    headers: AUTHORIZATION,
     data: {
       password: formData.password,
       userID: user.id
@@ -72,9 +74,15 @@ export const deleteUser = async (formData: DeleteFormData) => {
  * @url '/avatars'
  */
 export const updateAvatar = async (newAvatar: string) => {
-  const response = await axios.put(`${API}/user/update/avatar`, { newAvatar }, {
-    withCredentials: true
-  })
+  const response = await axios
+    .put(
+      `${API}/user/update/avatar`,
+      { newAvatar },
+      {
+        withCredentials: true,
+        headers: AUTHORIZATION,
+      }
+    )
     .then((res) => {
       return res.data
     })

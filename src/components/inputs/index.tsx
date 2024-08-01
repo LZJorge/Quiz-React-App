@@ -17,7 +17,7 @@ export const Input: React.FC<Props> = ({ type, name, placeholder, required, icon
       <input
         type={type}
         name={name}
-        placeholder={placeholder || ''}
+        placeholder={placeholder || ' '}
         required={required}
         onChange={onChange}
       />

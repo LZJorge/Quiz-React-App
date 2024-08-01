@@ -7,6 +7,7 @@ interface Props {
   size: string
 	className?: string
   value?: string
+  padding?: 'p-regular'
 	onClick?: (value: string | undefined) => void
 }
 
@@ -16,6 +17,7 @@ const Button: React.FC<Props> = ({
   className, 
   size, 
   value,
+  padding = '',
   onClick 
 }) => {
   const dynamicClass = className ? `button-${className}` : ''
@@ -23,7 +25,7 @@ const Button: React.FC<Props> = ({
   return (
     <button
       type={type}
-      className={`${styles.button} ${styles[dynamicClass]} ${styles[size]}`}
+      className={`${styles.button} ${styles[dynamicClass]} ${styles[size]} ${styles[padding]}`}
       value={value}
       onClick={() => onClick?.(value)}
     >

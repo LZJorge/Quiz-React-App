@@ -74,7 +74,7 @@ const UpdateAvatar: React.FC = () => {
                   <i className='bx bx-save'></i>
                 </Button>
               </form>
-          </div>
+            </div>
           )}
         </>
       )}

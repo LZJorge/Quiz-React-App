@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { getCategories, Category } from "@/services/appServices"
+import { useState, useEffect } from 'react'
+import { getCategories, Category } from '@/services/appServices'
 
 const useCategory = () => {
   const [categories, setCategories] = useState<Category[] | undefined>([])

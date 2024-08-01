@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
-import Layout from "@/components/layout"
-import Loader from "@/components/loader"
-import useCategory from "@/hooks/useCategories"
-import { CATEGORY_PARAM,API } from "@/consts"
+import { Link } from 'react-router-dom'
+import Layout from '@/components/layout'
+import Loader from '@/components/loader'
+import useCategory from '@/hooks/useCategories'
+import { CATEGORY_PARAM,API } from '@/consts'
 import styles from './index.module.scss'
 
 const SelectGame: React.FC = () => {
@@ -26,7 +26,7 @@ const SelectGame: React.FC = () => {
             })
           )}
 
-          <Link to={`/app/play`} className={styles['category-box']}>
+          <Link to={'/app/play'} className={styles['category-box']}>
             <i className='bx bx-help-circle'></i>
 
             Aleatorio

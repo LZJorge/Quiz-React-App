@@ -15,14 +15,18 @@
     box-shadow: rgba(0, 0, 0, 0.276) 0px 16px 48px 0px;
 
     .content {
-        height: 100%;
-        padding: 20px;
+        min-height: calc(100% - 60px);
+        padding: 20px 20px 120px 20px;
         transition: all .2s;
 
         float: right;
         position: relative;
-        overflow-y: scroll;
         overflow-x: hidden;
+        overflow-y: visible;
+
+        * {
+            overflow-y: visible;
+        }
     }
 
     .content--aside-open {
@@ -40,6 +44,7 @@
     }
 
     .content {
+        height: 96vh;
         margin-top: 60px;
     }
 
@@ -47,7 +52,7 @@
         width: calc(100% - $aside-width-closed) !important;
 
         nav {
-            width: calc(100% - $aside-width-open);
+            width: calc(100% - $aside-width-open - 20px);
         }
     }
 }
@@ -57,5 +62,27 @@
         width: 100vw;
         height: 100vh;
         border-radius: 0;
+    }
+
+    .content {
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .content--aside-open {
+        width: 100% !important;
+
+        nav {
+            width: calc(100% - 20px);
+        }
+    }
+
+    .content--aside-closed {
+        width: 100% !important;
+
+        nav {
+            width: calc(100% - 20px);
+        }
     }
 }

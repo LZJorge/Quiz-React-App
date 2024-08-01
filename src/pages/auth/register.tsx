@@ -31,7 +31,7 @@ const Register: React.FC = () => {
 
       toast.success(response.message)
 
-      navigate('/login')
+      navigate('/auth/login')
     } catch (error) {
       if(isAxiosError(error)) {
         if(error.response?.data.errors) {
@@ -86,7 +86,7 @@ const Register: React.FC = () => {
           { isLoading ? (<i className='bx bx-loader-alt bx-spin'></i>) : ('Enviar')}
         </Button>
 
-        <Link to="/login">Iniciar sesión</Link>
+        <Link to="/auth/login">Iniciar sesión</Link>
       </form>
     </div>
   )

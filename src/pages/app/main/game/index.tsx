@@ -61,19 +61,19 @@ const Game: React.FC = () => {
           ) : (
             <div className={styles['option-buttons']}>
               { question.options.map((value: string, key: number) => {
-                  return (
-                    <Button
-                      type='button'
-                      className='primary'
-                      value={value}
-                      onClick={() => handleClick(value)}
-                      key={key}
-                      size='full'
-                    >
-                      {value}
-                    </Button>
-                  )
-                }) 
+                return (
+                  <Button
+                    type='button'
+                    className='primary'
+                    value={value}
+                    onClick={() => handleClick(value)}
+                    key={key}
+                    size='full'
+                  >
+                    {value}
+                  </Button>
+                )
+              }) 
               }
             </div>
           ) }

@@ -33,6 +33,8 @@ const Login: React.FC = () => {
 
       toast.success(response.message)
 
+      localStorage.removeItem('accessToken')
+      localStorage.setItem('accessToken', response.token)
       setAuth(true)
       navigate('/')
     } catch(error) {
@@ -81,7 +83,7 @@ const Login: React.FC = () => {
           { isLoading ? (<i className='bx bx-loader-alt bx-spin'></i>) : ('Enviar')}
         </Button>
 
-        <Link to="/register">Registrarse</Link>
+        <Link to="/auth/register">Registrarse</Link>
       </form>
     </div>
   )

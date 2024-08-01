@@ -10,9 +10,15 @@ import '../../../node_modules/sweetalert2/dist/sweetalert2.min.css'
 import styles from './style.module.scss'
 
 const Sidebar: React.FC = () => {  
-  const { sidebarState } = useContext(SidebarContext)
+  const { sidebarState, setSidebarState } = useContext(SidebarContext)
   const { setAuth } = useContext(LoginContext)
   const navigate = useNavigate()
+
+  const closeMenuOnMobile = () => {
+    if(sidebarState === 'open' && window.innerWidth <= 768) {
+      setSidebarState('closed')
+    }
+  }
 
   const handleLogout = async () => {
     Swal.fire({
@@ -20,16 +26,17 @@ const Sidebar: React.FC = () => {
       text: '¿Estás seguro que desear cerrar la sesión?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Cerrar'
-    }).then( async (result) => {
-      if(result.isConfirmed) {
+      confirmButtonText: 'Cerrar',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
         const response = await getData('/user/logout')
 
         if (response.code == 'success') {
           toast.success(response.message)
 
+          localStorage.removeItem('accessToken')
           setAuth(false)
-          navigate('/login')
+          navigate('/auth/login')
         } else {
           toast.error(response.message)
         }
@@ -46,22 +53,22 @@ const Sidebar: React.FC = () => {
         </div>
 
         <div className={styles['aside-buttons']}>
-          <Link to={'/'} className={styles['aside-button']}>
+          <Link to={'/'} onClick={closeMenuOnMobile} className={styles['aside-button']}>
             <i className="bx bxs-dashboard"></i>
             <span>Inicio</span>
           </Link>
 
-          <Link to={'/app'} className={styles['aside-button']}>
+          <Link to={'/app'} onClick={closeMenuOnMobile} className={styles['aside-button']}>
             <i className="bx bxs-joystick"></i>
             <span>Jugar</span>
           </Link>
 
-          <Link to={'/leaderboard'} className={styles['aside-button']}>
+          <Link to={'/leaderboard'} onClick={closeMenuOnMobile} className={styles['aside-button']}>
             <i className="bx bxs-trophy"></i>
             <span>Clasificación</span>
           </Link>
 
-          <Link to={'/settings'} className={styles['aside-button']}>
+          <Link to={'/settings'} onClick={closeMenuOnMobile} className={styles['aside-button']}>
             <i className="bx bxs-cog"></i>
             <span>Ajustes</span>
           </Link>
