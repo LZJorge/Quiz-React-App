@@ -31,10 +31,11 @@ const Login: React.FC = () => {
     try {
       const response = await SendLoginFormData(formData)
 
+      localStorage.removeItem("accessToken");
+      localStorage.setItem("accessToken", response.token);
+
       toast.success(response.message)
 
-      localStorage.removeItem('accessToken')
-      localStorage.setItem('accessToken', response.token)
       setAuth(true)
       navigate('/')
     } catch(error) {

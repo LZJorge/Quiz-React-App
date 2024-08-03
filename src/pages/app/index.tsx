@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { useUser } from '@/hooks/useUser'
 import Layout from '@/components/layout'
 import Loader from '@/components/loader'
@@ -8,12 +7,11 @@ import { API } from '@/consts'
 const Profile: React.FC = () => {
   const { user, isLoading } = useUser()
 
-  const userSuccessRate = useMemo(() =>
-    (successResponses: number, totalQuestions: number) => {
-      const rate = Math.round((successResponses / totalQuestions) * 100)
+  const userSuccessRate = (successResponses: number, totalQuestions: number) => {
+    const rate = Math.round((successResponses / totalQuestions) * 100)
 
-      return rate
-    }, [])
+    return rate
+  }
 
   return (
     <Layout>
