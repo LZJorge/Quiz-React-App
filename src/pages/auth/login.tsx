@@ -31,7 +31,8 @@ const Login: React.FC = () => {
     try {
       const response = await SendLoginFormData(formData)
 
-      localStorage.setItem("accessToken", response.token);
+      localStorage.removeItem("accessToken")
+      localStorage.setItem("accessToken", response.token)
 
       toast.success(response.message)
 
@@ -39,7 +40,8 @@ const Login: React.FC = () => {
       
       setTimeout(() => {
         navigate('/')
-      }, 1000)
+        window.location.reload()
+      }, 1200)
     } catch(error) {
       if(isAxiosError(error)) {
         if(error.response?.data.errors) {
