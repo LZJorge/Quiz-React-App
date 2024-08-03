@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import Button from '../button'
-import { getData } from '@/services/userServices'
 import Swal from 'sweetalert2'
 import { toast } from 'react-toastify'  
 import { LoginContext } from '@/context/LoginContext'
@@ -22,24 +21,18 @@ const Sidebar: React.FC = () => {
 
   const handleLogout = async () => {
     Swal.fire({
-      title: 'Cerrar sesión',
-      text: '¿Estás seguro que desear cerrar la sesión?',
-      icon: 'warning',
+      title: "Cerrar sesión",
+      text: "¿Estás seguro que desear cerrar la sesión?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Cerrar',
+      confirmButtonText: "Cerrar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await getData('/user/logout')
+        toast.success("Sesión cerrada con exito");
 
-        if (response.code == 'success') {
-          toast.success(response.message)
-
-          localStorage.removeItem('accessToken')
-          setAuth(false)
-          navigate('/auth/login')
-        } else {
-          toast.error(response.message)
-        }
+        localStorage.removeItem("accessToken");
+        setAuth(false);
+        navigate("/auth/login");
       }
     })
   }
