@@ -31,13 +31,15 @@ const Login: React.FC = () => {
     try {
       const response = await SendLoginFormData(formData)
 
-      localStorage.removeItem("accessToken");
       localStorage.setItem("accessToken", response.token);
 
       toast.success(response.message)
 
       setAuth(true)
-      navigate('/')
+      
+      setTimeout(() => {
+        navigate('/')
+      }, 1000)
     } catch(error) {
       if(isAxiosError(error)) {
         if(error.response?.data.errors) {
