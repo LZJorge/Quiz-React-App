@@ -35,10 +35,9 @@ const Login: React.FC = () => {
       localStorage.setItem("accessToken", response.token)
 
       toast.success(response.message)
-
-      setAuth(true)
       
       setTimeout(() => {
+        setAuth(true);
         navigate('/')
         window.location.reload()
       }, 1200)
