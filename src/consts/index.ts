@@ -7,4 +7,4 @@ export const QUESTION_RESPONSE = {
 
 export const API = import.meta.env.VITE_API_URL
 
-export const AUTHORIZATION = { 'Authorization': `bearer ${localStorage.getItem('accessToken')}` }
+export const AUTHORIZATION = { 'Authorization': `bearer ${localStorage.getItem('accessToken')}`, 'Content-Type': 'application/json', 'Accept': 'application/json' }

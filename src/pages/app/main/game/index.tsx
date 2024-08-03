@@ -18,12 +18,16 @@ const Game: React.FC = () => {
     if(isLoading) return
     setIsLoading(true)
 
-    const response = await sendAnswer(value)
+    try {
+      const response = await sendAnswer(value)
 
-    if (response.code == QUESTION_RESPONSE.SUCCESS) {
-      toast.success(response.message)
-    } else {
-      toast.error(response.message)
+      if (response.code == QUESTION_RESPONSE.SUCCESS) {
+        toast.success(response.message);
+      } else {
+        toast.error(response.message);
+      }
+    } catch(error: any) {
+      toast.error(error.message)
     }
 
     setNewQuestion(true)

@@ -42,7 +42,7 @@ export const getQuestion = async (category?: string): Promise<Question>  => {
 }
 
 export const sendAnswer = async (answer: string) => {
-  const response = await axios.put(`${API}/question`, { answer }, { 
+  const response = await axios.post(`${API}/question`, { answer }, { 
     withCredentials: true,
     headers: AUTHORIZATION
   })
