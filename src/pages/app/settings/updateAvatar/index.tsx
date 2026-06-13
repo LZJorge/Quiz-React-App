@@ -42,6 +42,11 @@ const UpdateAvatar: React.FC = () => {
         <Loader />
       ) : (
         <>
+          {!avatars && (
+            <div className={styles.container}>
+              <h2>No hay avatares disponibles en este momento.</h2>
+            </div>
+          )}
           { avatars && (
             <div className={styles.container}>
               <form onSubmit={handleSubmitForm} className={styles.box}>

@@ -18,7 +18,7 @@ const SelectGame: React.FC = () => {
             categories.map( (value, key) => {
               return (
                 <Link to={`/app/play?${CATEGORY_PARAM}=${value.slug}`} key={key} className={styles['category-box']}>
-                  <img src={`${API}/${value.imgUrl}`} alt=""/>
+                  <img src={`${API}${value.imgUrl}`} alt=""/>
 
                   { value.name }
                 </Link>
